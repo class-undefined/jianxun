@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import "../static/index"
 import SvgIcon from '../component/SvgIcon/SvgIcon'
 import { ToolBar } from '../component/ToolBar/ToolBar'
+import "../test"
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
