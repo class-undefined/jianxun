@@ -1,12 +1,17 @@
-interface StatusObject {
-    CODE: number,
+export interface StatusObject {
+    CODE: StatusCode,
     DEFAULT_MESSAGE: string
 }
-interface ResultCodeType {
+export interface ResultCodeType {
     [STATUS: string]: StatusObject
 }
 
-export const ResultCode: ResultCodeType = {
-    SUCCESS: { CODE: 20000, DEFAULT_MESSAGE: '操作成功~' },
-    ERROR: { CODE: 20001, DEFAULT_MESSAGE: '处理失败...' },
+export enum StatusCode {
+    SUCCESS=20000, // 成功
+    ERROR=20001 // 失败
+} 
+
+export const ResultMessage: ResultCodeType = {
+    SUCCESS: { CODE: StatusCode.SUCCESS, DEFAULT_MESSAGE: '操作成功~' },
+    ERROR: { CODE: StatusCode.ERROR, DEFAULT_MESSAGE: '处理失败...' },
 }
