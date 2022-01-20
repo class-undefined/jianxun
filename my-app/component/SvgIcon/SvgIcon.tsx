@@ -15,7 +15,7 @@ type ISvg = {
   onClick?: () => void
 }
 
-const SvgIcon: React.FC<ISvg> = (props: any) => {
+export const SvgIcon: React.FC<ISvg> = (props: any) => {
   const {
     iconClass,
     className,
@@ -61,4 +61,3 @@ const SvgIcon: React.FC<ISvg> = (props: any) => {
   )
 }
 
-export default SvgIcon

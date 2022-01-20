@@ -1,0 +1,32 @@
+.container {
+    position: relative;
+    height: 100%;
+}
+
+.action {
+    position: absolute;
+    display: flex;
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    margin: auto;
+}
+
+.svg {
+    display: inline-block;
+    padding-left: 20%;
+    flex: 1;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.text {
+    flex: 2;
+    font-size: 13px;
+    font-weight: 300;
+    display: inline-block;
+    text-indent: 1em;
+    text-align: left;
+}

@@ -1,4 +1,4 @@
-import { ResultMessage as Type, StatusCode } from "./type"
+import { ResultMessage, StatusCode, Response } from "./type"
 /**
  * 用于链式调用构建Response
  * @example
@@ -23,36 +23,38 @@ export class Result {
         return new Result()
     }
 
-    setData(_data: any) {
+    public setData(_data: any): Result {
         this.data = _data
         return this
     }
 
-    setCode(_code: StatusCode) {
+    public setCode(_code: StatusCode): Result {
         this.code = _code
         return this
     }
 
-    setMessage(_message: string) {
+    public setMessage(_message: string): Result {
         this.message = _message
         return this
     }
 
-    Ok(_message: string | null | undefined) {
-        const message = !_message ? Type.SUCCESS.DEFAULT_MESSAGE : _message
-        return this.setCode(Type.SUCCESS.CODE).setMessage(message + '')
+
+    public Ok(_message: string | null | undefined): Result {
+        const message = !_message ? ResultMessage.SUCCESS.DEFAULT_MESSAGE : _message
+        return this.setCode(ResultMessage.SUCCESS.CODE).setMessage(message + '')
     }
 
-    Error(_message: string | null | undefined) {
-        const message = !_message ? Type.ERROR.DEFAULT_MESSAGE : _message
-        return this.setCode(Type.ERROR.CODE).setMessage(message)
+    public Error(_message: string | null | undefined): Result {
+        const message = !_message ? ResultMessage.ERROR.DEFAULT_MESSAGE : _message
+        return this.setCode(ResultMessage.ERROR.CODE).setMessage(message)
     }
 
-    build() {
+    public build(): Response {
+        if (this.code === null || this.message === null) throw Error("构建错误，状态码或消息不能为空")
         return { code: this.code, message: this.message, data: this.data }
     }
 
-    toJson() {
+    public toJson(): string {
         return JSON.stringify(this.build())
     }
 }

@@ -1,4 +1,4 @@
-import { IconActionProps } from "./children/ToolBarIcon/ToolBarIcon"
+import { IconActionProps, ToolBarItem } from "./children/ToolBarIcon/ToolBarItem"
 import styles from './ToolBar.module.css'
 export interface ToolBarRenderData {
     comment: number, // 评论
@@ -15,16 +15,27 @@ export interface ToolBarProps {
  * @returns 
  */
 export const ToolBar: React.FC<ToolBarProps> = () => {
-    console.log(styles)
     return (
         <div className={styles['ToolBar-contaienr']}>
             <div className={styles['ToolBar-actions']}>
-                <div className={styles['ToolBar-action-item']}>1</div>
-                <div className={styles['ToolBar-action-item']}>2</div>
-                <div className={styles['ToolBar-action-item']}>3</div>
-                <div className={styles['ToolBar-action-item']}>4</div>
-                <div className={styles['ToolBar-action-item']}>5</div>
-                <div className={styles['ToolBar-action-item']}>6</div>
+                <div className={styles['ToolBar-action-item']}>
+                    <ToolBarItem icon='comment' content="23"/>
+                </div>
+                <div className={styles['ToolBar-action-item']}>
+                    <ToolBarItem icon='like' content="23"/>
+                </div>
+                <div className={styles['ToolBar-action-item']}>
+                    <ToolBarItem icon='share' content="23"/>
+                </div>
+                <div className={styles['ToolBar-action-item']}>
+                    <ToolBarItem icon='issue' content="反馈"/>
+                </div>
+                <div className={styles['ToolBar-action-item']}>
+                    <ToolBarItem icon='favorite' content="收藏"/>
+                </div>
+                <div className={styles['ToolBar-action-item']}>
+                    <ToolBarItem icon='voice' content="朗读"/>
+                </div>
             </div>
             <div className={styles['ToolBar-expand-btn']}>btn</div>
         </div>

@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import "../static/index"
-import SvgIcon from '../component/SvgIcon/SvgIcon'
 import { ToolBar } from '../component/ToolBar/ToolBar'
 import "../test"
 const Home: NextPage = () => {
@@ -13,7 +12,6 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <SvgIcon iconClass={'comment'}/>
       </main>
 
       <footer className={styles.footer}>
