@@ -1,5 +1,8 @@
 import { IconActionProps, ToolBarItem } from "./children/ToolBarIcon/ToolBarItem"
 import styles from './ToolBar.module.css'
+import { getArticleData } from "../../api/article"
+import { useEffect, useState } from "react"
+import { Response, StatusCode } from "../../utils/api/response/type"
 export interface ToolBarRenderData {
     comment: number, // 评论
     like: number, // 点赞
@@ -15,17 +18,30 @@ export interface ToolBarProps {
  * @returns 
  */
 export const ToolBar: React.FC<ToolBarProps> = () => {
+    const [data, setData] = useState({comment: 0, like: 0, share: 0})
+    const articleId = "123123"
+    const {comment, like, share} = data
+    useEffect(() => {
+        getArticleData(articleId).then((response: unknown) => {
+            const {code, data, message} = response as Response
+            if (code !== StatusCode.SUCCESS) {
+                alert("error1")
+                return
+            }
+            setData({...data})
+        })
+    }, [articleId])
     return (
         <div className={styles['ToolBar-contaienr']}>
             <div className={styles['ToolBar-actions']}>
                 <div className={styles['ToolBar-action-item']}>
-                    <ToolBarItem icon='comment' content="23"/>
+                    <ToolBarItem icon='comment' content={comment + ''}/>
                 </div>
                 <div className={styles['ToolBar-action-item']}>
-                    <ToolBarItem icon='like' content="23"/>
+                    <ToolBarItem icon='like' content={like + ''}/>
                 </div>
                 <div className={styles['ToolBar-action-item']}>
-                    <ToolBarItem icon='share' content="23"/>
+                    <ToolBarItem icon='share' content={share + ''}/>
                 </div>
                 <div className={styles['ToolBar-action-item']}>
                     <ToolBarItem icon='issue' content="反馈"/>

@@ -8,8 +8,9 @@ export default function handler(
     if (req.method !== "POST") res.status(200).json(Result.create().Error('Request not allowed').build())
     const data = {
         comment: 20,
-        favorite: 10086,
+        like: 10086,
         share: 10
     }
+    console.log(req.body)
     res.status(200).json(Result.create().setData(data).Ok(null).build())
 }

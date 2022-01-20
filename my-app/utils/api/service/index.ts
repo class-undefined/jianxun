@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { Response } from '../response/type'
 const config = {
-    baseUrl: "http://127.0.0.1/"
+    baseUrl: "http://localhost:3000/"
 }
 // create an axios instance
 const service = axios.create({
