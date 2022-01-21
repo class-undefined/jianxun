@@ -54,7 +54,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
             }
             setData({...data})
         })
-    }, [articleId, isExpend])
+    }, [articleId])
     
     const expendHandle = () => {
         const nextIsExpend = !isExpend
