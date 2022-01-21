@@ -9,7 +9,7 @@ my-app
 │       ├── children // ToolBar组件的子组件
 │       │   └── ToolBarItem
 │       └── components // 基于ToolBar组件的拓展组件，如点击评论图标展开的评论组件、点击收藏展开的收藏组件等
-├── example // 一些封装好的api使用样例或使用规划
+├── example // 一些封装好的api使用样例或使用规范
 │   └── utils // 工具api使用样例
 │       ├── response
 │       ├── service
