@@ -57,7 +57,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
         actionsClassName,
         expendBtnClassName } = expendBtnStyle
     useEffect(() => {
-        getArticleData(articleId).then((response: unknown) => {
+        getArticleData({articleId}).then((response: unknown) => {
             const { code, data, message } = response as Response
             if (code !== StatusCode.SUCCESS) {
                 alert("error1")

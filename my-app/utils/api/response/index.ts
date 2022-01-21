@@ -53,7 +53,7 @@ export class Result {
     }
 
     public build(): Response {
-        if (this.code === null || this.message === null) throw Error("构建错误，状态码或消息不能为空")
+        if (this.code === null || this.message === null) throw Error("构建错误，状态码或消息不能为空! Result缺少调用setCode或者setMessage")
         return { code: this.code, message: this.message, data: this.data }
     }
 
