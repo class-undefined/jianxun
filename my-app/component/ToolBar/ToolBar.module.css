@@ -33,7 +33,7 @@
 }
 
 
-.ToobBar-background-container {
+.ToolBar-background-container {
     position: absolute;
     bottom: 0px;
     width: 100%;
@@ -42,12 +42,12 @@
     transition: 0.5s cubic-bezier(0.68, 0, 0.265, 1.55);
 }
 
-.ToobBar-background-container-expend {
+.ToolBar-background-container-expend {
     height: 100px;
 }
 
 
-.ToobBar-background-container div {
+.ToolBar-background-container div {
     position: relative;
     z-index: -1;
     border-radius: 5px;
@@ -57,7 +57,7 @@
     transition: background-color 0.5s;
 }
 
-.ToobBar-background-container-expend div {
+.ToolBar-background-container-expend div {
     width: 90%;
     background-color: rgb(244,246,245);
     

@@ -27,7 +27,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     const [expendBtnStyle, setExpendBtnStyle] = useState({
         rootClassName: styles['ToolBar-root'],
         containerClassName: styles['ToolBar-contaienr'],
-        backGroundClassName: styles['ToobBar-background-container'],
+        backGroundClassName: styles['ToolBar-background-container'],
         actionsClassName: styles['ToolBar-actions'],
         expendBtnClassName: styles['ToolBar-expand-btn'],
         iconName: "more",
@@ -35,7 +35,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     })
     const rootClassNameController = ClassNameBuilder.from([styles['ToolBar-root'], styles['ToolBar-root-expend']]).build()
     const containerClassNameController = ClassNameBuilder.from([styles['ToolBar-contaienr'], styles['ToolBar-contaienr-expend']]).build()
-    const backGroundClassNameController = ClassNameBuilder.from([styles['ToobBar-background-container'], styles['ToobBar-background-container-expend']]).build()
+    const backGroundClassNameController = ClassNameBuilder.from([styles['ToolBar-background-container'], styles['ToolBar-background-container-expend']]).build()
     const actionsClassNameController = ClassNameBuilder.from([styles['ToolBar-actions'], styles['ToolBar-actions-expend']]).build()
     const expendBtnClassNameController = ClassNameBuilder.from([styles['ToolBar-expand-btn'], styles['ToolBar-expand-btn-expend']]).build()
     const articleId = "123123"
