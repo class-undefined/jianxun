@@ -1,3 +1,6 @@
+/**
+ * @author: 野漫横江
+ */
 import { ResultMessage, StatusCode, Response } from "./type"
 /**
  * 用于链式调用构建Response

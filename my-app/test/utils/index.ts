@@ -1,3 +1,6 @@
+/**
+ * @author: 野漫横江
+ */
 import { Result } from "../../utils/api/response"
 import { StatusCode } from "../../utils/api/response/type"
 

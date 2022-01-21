@@ -1,3 +1,6 @@
+/**
+ * @author: 野漫横江
+ */
 import axios from 'axios'
 import { Response } from '../response/type'
 const config = {

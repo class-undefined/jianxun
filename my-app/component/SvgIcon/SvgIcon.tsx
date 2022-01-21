@@ -1,3 +1,6 @@
+/**
+ * @author: 野漫横江
+ */
 import React, { useRef, useMemo, useState, useEffect } from 'react'
 import styles from "./SvgIcon.module.css"
 type IImport = {
@@ -47,7 +50,7 @@ export const SvgIcon: React.FC<ISvg> = (props: any) => {
 
   useEffect(() => {
     getSvg()
-  }, [])
+  })
 
   return (
     <svg
