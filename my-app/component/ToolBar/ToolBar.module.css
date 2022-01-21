@@ -1,3 +1,16 @@
+/**
+ * 末尾带有`expend`字段的className为ToolBar高度扩展时的额外样式
+ * normal: {
+ *  ToolBar-contaienr.height: 50px;
+ *  ToolBar-actions.grid-template-rows: 100%;
+ *  ToolBar-expand-btn svg.top: 15%;
+ * }
+ * expend: {
+ *  ToolBar-contaienr-expend.height: 100px;
+ *  ToolBar-actions.grid-template-rows: 50% 50%;
+ *  ToolBar-expand-btn svg.top: 35%;
+ * }
+ */
 .ToolBar-contaienr {
     position: absolute;
     bottom: 0px;
@@ -27,7 +40,6 @@
 
 .ToolBar-action-item {
     text-align: center;
-    /* border: #000000 1px solid; */
     border-radius: 5px;
 }
 

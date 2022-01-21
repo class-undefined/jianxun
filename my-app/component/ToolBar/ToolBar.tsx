@@ -1,7 +1,7 @@
 /**
  * @author: 野漫横江
  */
-import { IconActionProps, ToolBarItem } from "./children/ToolBarIcon/ToolBarItem"
+import { ToolBarItem } from "./children/ToolBarIcon/ToolBarItem"
 import styles from './ToolBar.module.css'
 import { getArticleData } from "../../api/article"
 import { useEffect, useState } from "react"
@@ -19,7 +19,7 @@ export interface ToolBarProps {
 }
 
 /**
- * 使用flex布局，将下层的三个图标下移离开可视区，然后点击扩展按钮时调整整体控件。
+ * 使用flex、grid布局，ToolBar控件分normal、expend两个状态，默认为normal，点击expendBtn切换状态。
  * @returns 
  */
 export const ToolBar: React.FC<ToolBarProps> = () => {
@@ -27,11 +27,13 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     const [expendBtnStyle, setExpendBtnStyle] = useState({
         rootClassName: styles['ToolBar-contaienr'],
         actionsClassName: styles['ToolBar-actions'],
+        expendBtnClassName: styles['ToolBar-expand-btn'],
         iconName: "more",
         isExpend: false
     })
     const rootClassNameController = ClassNameBuilder.from([styles['ToolBar-contaienr'], styles['ToolBar-contaienr-expend']]).build()
     const actionsClassNameController = ClassNameBuilder.from([styles['ToolBar-actions'], styles['ToolBar-actions-expend']]).build()
+    const expendBtnClassNameController = ClassNameBuilder.from([styles['ToolBar-expand-btn'], styles['ToolBar-expand-btn-expend']]).build()
     const articleId = "123123"
     const {comment, like, share} = data
     const renderData: ToolBarAction[] = [
@@ -42,7 +44,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
         {icon: 'favorite', content: "收藏", fixed: false},
         {icon: 'voice', content: "朗读", fixed: false}
     ] 
-    const {isExpend, iconName, rootClassName, actionsClassName} = expendBtnStyle
+    const {isExpend, iconName, rootClassName, actionsClassName, expendBtnClassName} = expendBtnStyle
     useEffect(() => {
         getArticleData(articleId).then((response: unknown) => {
             const {code, data, message} = response as Response
@@ -55,12 +57,13 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     }, [articleId, isExpend])
     
     const expendHandle = () => {
-        
+        const nextIsExpend = !isExpend
         setExpendBtnStyle({
-            isExpend: !isExpend,
-            rootClassName: rootClassNameController(!isExpend),
-            iconName: !isExpend ? "down" : "more",
-            actionsClassName: actionsClassNameController(!isExpend)
+            isExpend: nextIsExpend,
+            rootClassName: rootClassNameController(nextIsExpend),
+            actionsClassName: actionsClassNameController(nextIsExpend),
+            expendBtnClassName: expendBtnClassNameController(nextIsExpend),
+            iconName: nextIsExpend ? "down" : "more",
         })
     }
     return (
@@ -79,7 +82,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
                     })
                 }
             </div>
-            <div className={styles['ToolBar-expand-btn']} onClick={expendHandle}>
+            <div className={expendBtnClassName} onClick={expendHandle}>
                 <SvgIcon key={iconName} iconClass={iconName} height={32}/>
             </div>
         </div>
