@@ -1,4 +1,4 @@
-import { TestToolBarEffect } from "../../example/ToolBarModal"
+import { TestToolBarEffect } from "../../example/ToolBarEffect"
 
 export const ToolBarEffectTest = () => {
     // TestToolBarEffect("123123132") // 如果取消注释，则触发生命周期调用检查
