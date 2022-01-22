@@ -8,9 +8,10 @@ import { useEffect, useState } from "react"
 import { Response, StatusCode } from "../../utils/api/response/type"
 import { SvgIcon } from "../SvgIcon/SvgIcon"
 import { ClassNameBuilder } from "../../utils/style"
+import { Article } from "../../type/article"
 export interface ToolBarAction {
     icon: string,
-    content: string,
+    content: string | number,
     fixed: boolean,
     onClick?: () => void
 }
@@ -23,7 +24,7 @@ export interface ToolBarProps {
  * @returns 
  */
 export const ToolBar: React.FC<ToolBarProps> = () => {
-    const [data, setData] = useState({ comment: '-', like: '-', share: '-' })
+    const [data, setData] = useState({ comment: 0, like: 0, share: 0 })
     const [expendBtnStyle, setExpendBtnStyle] = useState({
         rootClassName: styles['ToolBar-root'],
         containerClassName: styles['ToolBar-contaienr'],
@@ -63,7 +64,8 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
                 alert("error1")
                 return
             }
-            setData({ ...data })
+            const {comment, like, share} = (data as Article)
+            setData({ comment, like: like.value, share })
         })
     }, [articleId])
 
