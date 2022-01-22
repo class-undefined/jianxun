@@ -1,3 +1,4 @@
+import { ToolBarModal } from "../../../component/ToolBar/components/ToolBarModal/ToolBarModal"
 import { ClassNameBuilder } from "../../../utils/style"
 
 export const styleExample = () => {

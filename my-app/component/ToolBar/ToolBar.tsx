@@ -4,11 +4,12 @@
 import { ToolBarItem } from "./children/ToolBarItem/ToolBarItem"
 import styles from './ToolBar.module.css'
 import { getArticleData } from "../../api/article"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Response, StatusCode } from "../../utils/api/response/type"
 import { SvgIcon } from "../SvgIcon/SvgIcon"
 import { ClassNameBuilder } from "../../utils/style"
 import { Article } from "../../type/article"
+import { ToolBarModal } from "./components/ToolBarModal/ToolBarModal"
 export interface ToolBarAction {
     icon: string,
     content: string | number,
@@ -68,7 +69,6 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
             setData({ comment, like: like.value, share })
         })
     }, [articleId])
-
     const expendHandle = () => {
         const nextIsExpend = !isExpend
         setExpendBtnStyle({
@@ -81,6 +81,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
             iconName: nextIsExpend ? "down" : "more",
         })
     }
+    const Template = (ToolBarModal.template()) as React.FC<any>
     return (
         <div className={rootClassName}>
             <div className={containerClassName}>
@@ -103,6 +104,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
                 </div>
             </div>
             <div className={backGroundClassName}><div></div></div>
+            <Template />
         </div>
     )
 }
