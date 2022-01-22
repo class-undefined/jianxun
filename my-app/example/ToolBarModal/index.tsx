@@ -1,5 +1,4 @@
-import { ToolBarModal } from "../../component/ToolBar/components/ToolBarModal/ToolBarModal"
-
-export const TestModal = (content: string) => {
-    ToolBarModal.render(() => <div>{content}</div>)
+import { ToolBarEffect } from "../../component/ToolBar/api/ToolBarEffect"
+export const TestToolBarEffect = (content: string) => {
+    ToolBarEffect.render("TestModal", (article) => () => <div>{content}</div>)
 }
