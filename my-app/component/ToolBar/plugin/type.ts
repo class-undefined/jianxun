@@ -1,5 +1,5 @@
-import { Article } from "../../../type/article";
-import { MouseEvent } from "react";
+import React, { MouseEvent } from "react";
+import { ChildrenProps } from "../api/ToolBarEffect/template";
 export enum ToolBarPluginType {
     COMMENT="comment",
     LIKE="like",
@@ -11,5 +11,5 @@ export enum ToolBarPluginType {
 
 export interface ToolBarPlugin {
     type: ToolBarPluginType,
-    plugin: (e:MouseEvent<HTMLDivElement>, article: Article) => JSX.Element
+    plugin: (e:MouseEvent<HTMLDivElement>) => React.FC<ChildrenProps>
 }

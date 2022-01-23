@@ -1,11 +1,18 @@
+import { Article } from "../../../../../type/article"
 import styles from "./index.module.css"
+export interface ChildrenProps {
+    article: Article,
+    [props: string]: any
+}
 interface TemplateProps {
-    children: JSX.Element
+    render: React.FC<ChildrenProps>,
+    article: Article
 }
 const Template: React.FC<TemplateProps> = (props: TemplateProps) => {
+    const F = props.render
     return (
         <div className={styles["template-container"]}>
-            {props.children}
+            <F article={props.article}/>
         </div>
     )
 }
