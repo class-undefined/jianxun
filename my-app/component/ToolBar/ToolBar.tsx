@@ -91,7 +91,6 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     ToolBarEffect.useHandle(article, (e) => {
         const {sender, component, article} = e
         if (article !== null) setArticle(article)
-        const F = component
         setTemplate(component)
     })
     const expendHandle = () => {
