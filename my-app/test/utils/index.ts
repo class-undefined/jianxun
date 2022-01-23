@@ -4,7 +4,8 @@
 import { Result } from "../../utils/api/response"
 import { StatusCode } from "../../utils/api/response/type"
 
-export const utilsTest = () => {
+export const utilsTest = (isRun: boolean) => {
+    if (!isRun) return
     const response = Result.create()
         .setCode(StatusCode.SUCCESS)
         .setMessage("请求成功")
