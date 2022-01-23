@@ -1,7 +1,7 @@
 import { MouseEvent } from "react"
 import { Article } from "../../../../type/article"
-import { ToolBarPlugin, ToolBarPluginType } from "../../plugin/type"
-import { ToolBarEffect } from "../ToolBarEffect"
+import { PluginConfig } from "../../plugin"
+import { ToolBarPluginType } from "../../plugin/type"
 
 export interface ToolBarAction {
     type: ToolBarPluginType,
@@ -44,7 +44,11 @@ const actions: ToolBarAction[] = [
 ]
 
 
+
+
 export const initData = (): InitData => {
+    /* 导入插件至actions */
+    PluginConfig.registerPlugins(actions)
     return {
         article, actions
     }

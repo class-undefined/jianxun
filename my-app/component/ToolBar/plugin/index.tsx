@@ -2,36 +2,60 @@
  * @author: 野漫横江
  */
 import { MouseEvent } from "react";
-import { Article } from "../../../type/article";
 import { ToolBarAction } from "../api/initToolBar";
 import { ToolBarEffect } from "../api/ToolBarEffect";
 import { ToolBarPlugin } from "./type";
-/**
- * 将插件注册到ToolBar组件
- * @param actions ToolBar的控件
- * @param article 文章数据
- * @param plugin 需要注册的插件
- * @returns 
- */
-const registerPlugin = (actions: ToolBarAction[], article: Article, plugin: ToolBarPlugin) => {
-    const action = actions.find(action => action.type === plugin.type)
-    if (action === undefined || article === null) return
-    action.onClick = (e: MouseEvent<HTMLDivElement>) => {
-        ToolBarEffect.render(plugin.type, plugin.plugin(e, article))
-    }
-}
+export class PluginConfig {
+    private constructor() {}
 
-/**
- * 批量将插件注册到ToolBar组件。
- * warning: 但是这样会导致一个问题，在切换文章时ToolBar由于变换了articleId，
- * useEffect会被触发导致article数据被改变，此时的article相当于是一份深拷贝数据
- * 猜测可能会导致插件获取到的article不会被更新。
- * @param actions ToolBar的控件
- * @param article 文章数据
- * @param plugins 需要注册的插件
- */
-export const registerPlugins = (actions: ToolBarAction[], article: Article, plugins: ToolBarPlugin[]) => {
-    for (const plugin of plugins) {
-        registerPlugin(actions, article, plugin)
+    private static plugins: ToolBarPlugin[] = []
+
+    private static isRegist = false // 插件是否已完成注册
+
+    /**
+     * 查找plugins中是否含有与target相同type属性的plugins，预估数据量不超过10个，无需考虑时间复杂度，使用内置find。
+     * @param target 欲查找的plugin
+     * @returns ToolBarPlugin | undefined
+     */
+    private static find = (target: ToolBarPlugin) => {
+        return PluginConfig.plugins.find(plugin => target.type === plugin.type)
     }
+
+    /**
+     * 将插件注册到ToolBar组件
+     * @param actions ToolBar的控件
+     * @param plugin 需要注册的插件
+     * @returns 
+     */
+    private static registPlugin = (actions: ToolBarAction[], plugin: ToolBarPlugin) => {
+        const action = actions.find(action => action.type === plugin.type)
+        if (action === undefined || action === null) return
+        action.onClick = (e: MouseEvent<HTMLDivElement>) => {
+            ToolBarEffect.render(plugin.type, plugin.plugin(e))
+        }
+    }
+
+    /**
+     * 支持链式调用，将插件挂载至ToolBar组件上
+     * @param plugin 欲挂载插件
+     * @returns 
+     */
+    public static use(plugin: ToolBarPlugin) {
+        if (PluginConfig.find(plugin) !== undefined) throw new Error(`type: [${plugin.type}]，已经被配置过了，不可重复配置！`)
+        PluginConfig.plugins.push(plugin)
+        return PluginConfig
+    }
+
+    /**
+     * 批量将插件注册到ToolBar组件。
+     * @param actions ToolBar的控件
+     */
+    public static registerPlugins = (actions: ToolBarAction[]) => {
+        if (PluginConfig.isRegist) throw new Error("registerPlugins方法只能调用一次，禁止非法调用registerPlugins。")
+        PluginConfig.isRegist = true
+        for (const plugin of PluginConfig.plugins) {
+            PluginConfig.registPlugin(actions, plugin)
+        }
+    }
+
 }

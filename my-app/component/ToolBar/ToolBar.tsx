@@ -11,18 +11,23 @@ import { ClassNameBuilder } from "../../utils/style"
 import { Article } from "../../type/article"
 import { ToolBarEffect } from "./api/ToolBarEffect"
 import { initData } from "./api/initToolBar"
+import Template, { ChildrenProps } from "./api/ToolBarEffect/template"
 export interface ToolBarProps {
     className?: string,
 }
 
+const _template: React.FC<ChildrenProps> = (props: ChildrenProps) => {
+    return (<template></template>)
+}
+
+const toolBarData = initData()
 /**
  * 使用flex、grid布局，ToolBar控件分normal、expend两个状态，默认为normal，点击expendBtn切换状态。
  * @returns 
  */
 export const ToolBar: React.FC<ToolBarProps> = () => {
-    const toolBarData = initData()
     const [article, setArticle] = useState(toolBarData.article)
-    const [Template, setTemplate] = useState((<template></template>))
+    const [renderTemplate, setRenderTemplate] = useState(() => _template)
     const [expendBtnStyle, setExpendBtnStyle] = useState({
         rootClassName: styles['ToolBar-root'],
         containerClassName: styles['ToolBar-contaienr'],
@@ -58,10 +63,10 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
         })
     }, [articleId])
     
-    ToolBarEffect.useHandle(article, (e) => {
-        const {sender, component, article} = e
+    ToolBarEffect.useHandle((e) => {
+        const {sender, template} = e
         if (article !== null) setArticle(article)
-        setTemplate(component)
+        setRenderTemplate(() => template)
     })
     const expendHandle = () => {
         const nextIsExpend = !isExpend
@@ -97,7 +102,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
                 </div>
             </div>
             <div className={backGroundClassName}><div></div></div>
-            {Template}
+            <Template article={article} render={renderTemplate}/>
         </div>
     )
 }
