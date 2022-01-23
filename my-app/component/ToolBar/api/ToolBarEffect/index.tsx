@@ -4,10 +4,10 @@
 import mitt, {Emitter} from "mitt";
 import React from "react";
 import { Article } from "../../../../type/article";
-
+import Template from "./template"
 interface HandlerData {
     sender: string, // 事件发送者
-    component: React.FC, // 发送数据
+    component: JSX.Element, // 发送数据
     article: Article | null
 }
 
@@ -49,7 +49,8 @@ export class ToolBarEffect {
      */
     public static render(sender: string, callback: (article: Article) => React.FC ) {
         if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早！");
-        const F = callback(this.article as Article)
+        const Children = callback(this.article as Article)
+        const F = <Template children={<Children/>}/>  
         this.emitter.emit("render", {sender, component: F, article: this.article})
     }
 }

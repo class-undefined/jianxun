@@ -92,7 +92,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
         const {sender, component, article} = e
         if (article !== null) setArticle(article)
         const F = component
-        setTemplate(<F/>)
+        setTemplate(component)
     })
     const expendHandle = () => {
         const nextIsExpend = !isExpend
