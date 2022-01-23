@@ -9,9 +9,9 @@ import { Response, StatusCode } from "../../utils/api/response/type"
 import { SvgIcon } from "../SvgIcon/SvgIcon"
 import { ClassNameBuilder } from "../../utils/style"
 import { Article } from "../../type/article"
-import { ToolBarEffect } from "./api/ToolBarEffect"
+import { ToolBarEffect } from "./api/middleware/ToolBarEffect"
 import { initData } from "./api/initToolBar"
-import Template, { ChildrenProps } from "./api/ToolBarEffect/template"
+import Template, { ChildrenProps } from "./api/middleware/ToolBarEffect/template"
 export interface ToolBarProps {
     className?: string,
 }

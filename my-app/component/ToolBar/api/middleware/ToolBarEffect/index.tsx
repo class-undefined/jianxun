@@ -3,7 +3,7 @@
  */
 import mitt, {Emitter} from "mitt";
 import React from "react";
-import { ToolBarPluginType } from "../../plugin/type";
+import { ToolBarPluginType } from "../plugin/type";
 import { ChildrenProps } from "./template"
 interface HandlerData {
     sender: string, // 事件发送者

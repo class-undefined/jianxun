@@ -1,5 +1,5 @@
 import React, { MouseEvent } from "react";
-import { ChildrenProps } from "../api/ToolBarEffect/template";
+import { ChildrenProps } from "../ToolBarEffect/template";
 export enum ToolBarPluginType {
     COMMENT="comment",
     LIKE="like",

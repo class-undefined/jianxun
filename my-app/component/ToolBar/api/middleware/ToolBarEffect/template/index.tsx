@@ -1,4 +1,4 @@
-import { Article } from "../../../../../type/article"
+import { Article } from "../../../../../../type/article"
 import styles from "./index.module.css"
 export interface ChildrenProps {
     article: Article,

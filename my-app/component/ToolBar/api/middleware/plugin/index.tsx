@@ -2,8 +2,8 @@
  * @author: 野漫横江
  */
 import { MouseEvent } from "react";
-import { ToolBarAction } from "../api/initToolBar";
-import { ToolBarEffect } from "../api/ToolBarEffect";
+import { ToolBarAction } from "../../initToolBar";
+import { ToolBarEffect } from "../ToolBarEffect";
 import { ToolBarPlugin } from "./type";
 export class PluginConfig {
     private constructor() {}

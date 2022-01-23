@@ -1,8 +1,7 @@
 import { MouseEvent } from "react"
 import { Article } from "../../../../type/article"
-import { PluginConfig } from "../../plugin"
-import { ToolBarPluginType } from "../../plugin/type"
-
+import { PluginConfig } from "../middleware/plugin"
+import { ToolBarPluginType } from "../middleware/plugin/type"
 export interface ToolBarAction {
     type: ToolBarPluginType,
     icon: string,
