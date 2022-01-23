@@ -1,10 +1,11 @@
+import { MouseEvent } from "react"
 import {SvgIcon} from "../../../SvgIcon/SvgIcon"
 import styles from "./ToolBarItem.module.css"
 /* 图标 */
 export interface IconActionProps {
     icon: string,
     content: string | number,
-    onClick?: () => void
+    onClick?: (e: MouseEvent<HTMLDivElement>) => void
 }
 export const ToolBarItem: React.FC<IconActionProps> = (props: IconActionProps) => {
     const {icon, content} = props

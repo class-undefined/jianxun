@@ -4,6 +4,7 @@
 import mitt, {Emitter} from "mitt";
 import React from "react";
 import { Article } from "../../../../type/article";
+import { ToolBarPluginType } from "../../plugin/type";
 import Template from "./template"
 interface HandlerData {
     sender: string, // 事件发送者
@@ -47,10 +48,10 @@ export class ToolBarEffect {
      * @param sender 消息发送者身份
      * @param callback 返回需要对ToolBar进行更新的回调函数
      */
-    public static render(sender: string, callback: (article: Article) => React.FC ) {
+    public static render(sender: ToolBarPluginType, template: JSX.Element ) {
         if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
-        const Children = callback(this.article as Article)
-        const F = <Template children={<Children/>}/>  
+        const Children = template
+        const F = <Template children={Children}/>  
         this.emitter.emit("render", {sender, component: F, article: this.article})
     }
 }
