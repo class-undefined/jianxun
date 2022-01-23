@@ -23,6 +23,8 @@ export class PluginConfig {
 
     /**
      * 将插件注册到ToolBar组件
+     * 1. 生成action的onClick事件，该事件触发会发送render消息通知ToolBar渲染插件的React.FC
+     * 2. 将该事件赋给action的onClick
      * @param actions ToolBar的控件
      * @param plugin 需要注册的插件
      * @returns 

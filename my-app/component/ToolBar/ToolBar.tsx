@@ -43,7 +43,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     const actionsClassNameController = ClassNameBuilder.from([styles['ToolBar-actions'], styles['ToolBar-actions-expend']]).build()
     const expendBtnClassNameController = ClassNameBuilder.from([styles['ToolBar-expand-btn'], styles['ToolBar-expand-btn-expend']]).build()
     const articleId = "123123"
-    const renderData = toolBarData.actions
+    const actions = toolBarData.actions
     const {
         isExpend,
         iconName,
@@ -85,7 +85,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
             <div className={containerClassName}>
                 <div className={actionsClassName}>
                     {
-                        renderData.filter((actionItem => {
+                        actions.filter((actionItem => {
                             if (actionItem.fixed) return true
                             return isExpend
                         })).map((actionItem) => {
