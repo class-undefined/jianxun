@@ -1,7 +1,7 @@
 /**
  * @author: 野漫横江
  */
-import React, { useRef, useMemo, useState, useEffect } from 'react'
+import React, { useRef, useMemo, useState, useEffect, MouseEvent } from 'react'
 import styles from "./SvgIcon.module.css"
 type IImport = {
   default?: Record<string, any>
@@ -15,7 +15,7 @@ type ISvg = {
   height?: number
   color?: string
   style?: Record<string, any>
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
 export const SvgIcon: React.FC<ISvg> = (props: any) => {

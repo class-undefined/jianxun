@@ -33,8 +33,11 @@ export class PluginConfig {
         const action = actions.find(action => action.type === plugin.type)
         if (action === undefined || action === null) return
         action.onClick = (e: MouseEvent<HTMLDivElement>) => {
+            e.preventDefault()
             ToolBarEffect.render(plugin.type, plugin.plugin(e))
         }
+        
+        
     }
 
     /**
