@@ -6,10 +6,20 @@ my-app
 ├── component // 组件
 │   ├── SvgIcon // svg图标组件
 │   └── ToolBar // ToolBar组件
-│       ├── children // ToolBar组件的子组件
-│       │   └── ToolBarItem
-│       └── components // 基于ToolBar组件的拓展组件，如点击评论图标展开的评论组件、点击收藏展开的收藏组件等
+│       ├── api // [preivte]ToolBar初始化数据以及服务插件的中间件及相关api
+│       │   ├── initToolBar // [preivte]用于初始化ToolBar数据并将插件提供给ToolBar
+│       │   └── middleware // [preivte]提供插件承载的模板以及注册插件的核心api
+│       │       ├── ToolBarEffect // [preivte]插件注入监听及控制模板的事件处理
+│       │       │   └── template // [preivte]插件容器模板
+│       │       └── plugin // [public]useToolBarEffect中间件api
+│       ├── children // [preivte]ToolBar自身控件的tsx
+│       │   └── ToolBarItem // [preivte]ToolBar的actions控件
+│       └── plugin // [public]插件以及将插件注入至ToolBar
+│           ├── api // [public] 提供控制模板操作的一些api
+│           └── plugins // [public] 编写的插件存放的位置，插件即ToolBar组件的拓展组件，如点击评论图标展开的评论组件、点击收藏展开的收藏组件等。如何将插件注入至ToolBar请参照:my-app/component/ToolBar/plugin/plugins/index.ts
+│               └── comment
 ├── example // 一些封装好的api使用样例或使用规范
+│   ├── ToolBarEffect // useToolBarEffect api的使用样例
 │   └── utils // 工具api使用样例
 │       ├── response
 │       ├── service
@@ -18,18 +28,18 @@ my-app
 │   └── api
 ├── public
 ├── static
-│   └── icons 
-│       └── svg // 用于给SvgIcon组件调用svg图标的svg文件存放目录
+│   └── icons
+│       └── svg // 提供给SvgIcon组件的svg文件存放目录
 ├── styles
 ├── test // 一些用于测试的代码
+│   ├── ToolBarEffect
 │   ├── example
 │   └── utils
-├── type // 比较核心或公用的type类型存放在这里，建议单独创建一个文件夹
+├── type // 比较核心或公用的type类型存放在这里，建议在此目录单独创建一个文件夹
 │   └── article
-└── utils // 比较核心或公用的工具函数存放在这里，建议根据功能划分创建文件夹 （使用方法在最上层的example目录）
+└── utils // 可复用的工具api，建议根据功能划分创建文件夹 （使用方法在最上层的example目录）
     ├── api
     │   ├── response
     │   └── service
     └── style
-
 ```
