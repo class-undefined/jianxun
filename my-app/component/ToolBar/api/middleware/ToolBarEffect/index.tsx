@@ -16,6 +16,7 @@ export enum EventCommand {
 
 interface EventData {
     command: EventCommand,
+    payload?: any
 }
 
 type EventType = {
@@ -73,9 +74,9 @@ export class useToolBarEffect {
      * 发送事件命令给command处理函数
      * @param command 事件命令
      */
-    public static send(command: EventCommand) {
+    public static send(command: EventCommand, payload?:any) {
         if (useToolBarEffect.isListen === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
-        useToolBarEffect.emitter.emit("command", {command})
+        useToolBarEffect.emitter.emit("command", {command, payload})
     }
 
 }

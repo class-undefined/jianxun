@@ -1,10 +1,37 @@
+@keyframes open {
+    from {
+        height: 0;
+    }
+    to {
+        height: 70vh;
+    }
+}
+
+
+@keyframes close {
+    from {
+        height: 70vh;
+    }
+    to {
+        height: 0;
+    }
+}
+
 .Comment-container {
-    height: 70vh;
+    height:0;
     width: 100%;
     border: 1px #000 solid;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     z-index: 1;
+    animation-duration: 0.45s;
+    animation-fill-mode: both;
+    animation-name: open;
+    animation-timing-function: cubic-bezier(.44,.7,.52,1.06);
+}
+
+.Comment-container-close {
+    animation-name: close;
 }
 
 .Comment-header {
