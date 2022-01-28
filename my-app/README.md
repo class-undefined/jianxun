@@ -1,22 +1,22 @@
 ### 目录结构
-
+> *标星号的目录为ToolBar组件自身维护的api，不要进行改动*
 ```
 my-app
 ├── api //请求api接口
 ├── component // 组件
 │   ├── SvgIcon // svg图标组件
 │   └── ToolBar // ToolBar组件
-│       ├── api // [preivte]ToolBar初始化数据以及服务插件的中间件及相关api
-│       │   ├── initToolBar // [preivte]用于初始化ToolBar数据并将插件提供给ToolBar
-│       │   └── middleware // [preivte]提供插件承载的模板以及注册插件的核心api
-│       │       ├── ToolBarEffect // [preivte]插件注入监听及控制模板的事件处理
-│       │       │   └── template // [preivte]插件容器模板
-│       │       └── plugin // [public]useToolBarEffect中间件api
-│       ├── children // [preivte]ToolBar自身控件的tsx
-│       │   └── ToolBarItem // [preivte]ToolBar的actions控件
-│       └── plugin // [public]插件以及将插件注入至ToolBar
-│           ├── api // [public] 提供控制模板操作的一些api
-│           └── plugins // [public] 编写的插件存放的位置，插件即ToolBar组件的拓展组件，如点击评论图标展开的评论组件、点击收藏展开的收藏组件等。如何将插件注入至ToolBar请参照:my-app/component/ToolBar/plugin/plugins/index.ts
+│       ├── api // ToolBar初始化数据以及服务插件的中间件及相关api *
+│       │   ├── initToolBar // 用于初始化ToolBar数据并将插件提供给ToolBar *
+│       │   └── middleware // 提供插件承载的模板以及注册插件的核心api *
+│       │       ├── ToolBarEffect // 插件注入监听及控制模板的事件处理 *
+│       │       │   └── template // 插件容器模板 *
+│       │       └── plugin // useToolBarEffect中间件api
+│       ├── children // ToolBar自身控件的tsx *
+│       │   └── ToolBarItem // ToolBar的actions控件 *
+│       └── plugin // 插件以及将插件注入至ToolBar
+│           ├── api // 提供控制模板操作的一些api
+│           └── plugins // 编写的插件存放的位置，插件即ToolBar组件的拓展组件，如点击评论图标展开的评论组件、点击收藏展开的收藏组件等。如何将插件注入至ToolBar请参照:my-app/component/ToolBar/plugin/plugins/index.ts
 │               └── comment
 ├── example // 一些封装好的api使用样例或使用规范
 │   ├── ToolBarEffect // useToolBarEffect api的使用样例
