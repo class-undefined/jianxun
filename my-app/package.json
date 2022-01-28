@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/mockjs": "^1.0.6",
     "axios": "^0.25.0",
     "mitt": "^3.0.0",
     "mockjs": "^1.1.0",
