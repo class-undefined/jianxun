@@ -80,3 +80,6 @@ export class useToolBarEffect {
     }
 
 }
+
+
+// TODO: 是否缓存插件数据（即选择是否在ToolBar卸载控件）
