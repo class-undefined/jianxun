@@ -4,7 +4,7 @@ import { ArticleComment } from "../../type/article";
 export const createArticleComment = ():ArticleComment => {
     return {
         id: Mock.Random.id(),
-        type: Mock.mock([0, 1]),
+        type: Mock.Random.pick([0, 1]),
         user: {
             id: Mock.Random.id(),
             nick: Mock.Random.cname(),
