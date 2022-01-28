@@ -27,7 +27,7 @@ type EventType = {
 /**
  * 用于通知ToolBar进行渲染指定组件
  */
-export class ToolBarEffect {
+export class useToolBarEffect {
     private static emitter: Emitter<EventType> = mitt<EventType>() // 事件发送器
 
     private static isRegister = false
@@ -62,6 +62,7 @@ export class ToolBarEffect {
      * @param callback 处理command事件的回调函数
      */
     public static listen(callback: (e: EventData) => void) {
+        if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
         this.emitter.off("command")
         this.emitter.on("command", callback)
     }

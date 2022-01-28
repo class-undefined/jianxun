@@ -1,4 +1,4 @@
-import { ToolBarEffect } from "../../component/ToolBar/api/middleware/ToolBarEffect"
+import { useToolBarEffect } from "../../component/ToolBar/api/middleware/ToolBarEffect"
 import { ChildrenProps } from "../../component/ToolBar/api/middleware/ToolBarEffect/template"
 import { ToolBarPluginType } from "../../component/ToolBar/api/middleware/plugin/type"
 const Test: React.FC<ChildrenProps> = (props: ChildrenProps) => {
@@ -6,5 +6,5 @@ const Test: React.FC<ChildrenProps> = (props: ChildrenProps) => {
 }
 
 export const TestToolBarEffect = (content: string) => {
-    ToolBarEffect.render(ToolBarPluginType.COMMENT, (props: ChildrenProps) => <Test article={props.article} content={content}/>)
+    useToolBarEffect.render(ToolBarPluginType.COMMENT, (props: ChildrenProps) => <Test article={props.article} content={content}/>)
 }

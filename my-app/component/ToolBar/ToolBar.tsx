@@ -9,7 +9,7 @@ import { Response, StatusCode } from "../../utils/api/response/type"
 import { SvgIcon } from "../SvgIcon/SvgIcon"
 import { ClassNameBuilder } from "../../utils/style"
 import { Article } from "../../type/article"
-import { ToolBarEffect } from "./api/middleware/ToolBarEffect"
+import { EventCommand, useToolBarEffect } from "./api/middleware/ToolBarEffect"
 import { initData } from "./api/initToolBar"
 import Template, { ChildrenProps } from "./api/middleware/ToolBarEffect/template"
 export interface ToolBarProps {
@@ -63,10 +63,17 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
         })
     }, [articleId])
     
-    ToolBarEffect.useHandle((e) => {
+    useToolBarEffect.useHandle((e) => {
         const {sender, template} = e
         if (article !== null) setArticle(article)
         setRenderTemplate(() => template)
+    })
+    /* TODO: 若将来EventCommand枚举数量增多，则需要考虑将callback单独抽离 */
+    useToolBarEffect.listen((e) => {
+        const {command} = e
+        if (command === EventCommand.CLOSE) {
+            setRenderTemplate(_template)
+        }
     })
     const expendHandle = () => {
         const nextIsExpend = !isExpend

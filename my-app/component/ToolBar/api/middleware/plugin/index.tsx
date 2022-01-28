@@ -3,7 +3,7 @@
  */
 import { MouseEvent } from "react";
 import { ToolBarAction } from "../../initToolBar";
-import { ToolBarEffect } from "../ToolBarEffect";
+import { useToolBarEffect } from "../ToolBarEffect";
 import { ToolBarPlugin } from "./type";
 export class PluginConfig {
     private constructor() {}
@@ -34,7 +34,7 @@ export class PluginConfig {
         if (action === undefined || action === null) return
         action.onClick = (e: MouseEvent<HTMLDivElement>) => {
             e.preventDefault()
-            ToolBarEffect.render(plugin.type, plugin.plugin(e))
+            useToolBarEffect.render(plugin.type, plugin.plugin(e))
         }
         
         
