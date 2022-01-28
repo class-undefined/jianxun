@@ -8,7 +8,7 @@ export const createArticleComment = ():ArticleComment => {
         user: {
             id: Mock.Random.id(),
             nick: Mock.Random.cname(),
-            avatar: Mock.Random.image("150x150"),
+            avatar: Mock.Random.image("150x150", '#894FC4', '#FFF'),
         },
         btc: {
             comment: Mock.Random.integer(0, 100000),

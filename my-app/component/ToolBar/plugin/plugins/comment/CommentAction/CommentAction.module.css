@@ -1,26 +1,37 @@
-.CommentAction-contaienr {
+.CommentAction-container {
+
+}
+
+.CommentAction-main {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
 }
+
 .CommentAction-avatar {
     flex: 0 1;
     flex-basis: 50px;
     width: 50px;
     height: 50px;
-    
+}
+
+.CommentAction-avatar img {
+    border-radius: 50%;
+    object-fit: fill;
 }
 .CommentAction-body {
     flex: 1;
 }
 
 .CommentAction-nick {
+    color: rgb(53, 94, 170);
 
 }
 .CommentAction-comment {
-
+    margin-top: 5px;
 }
 .CommentAction-foot {
+    flex: none;
     height: 25px;
 }
