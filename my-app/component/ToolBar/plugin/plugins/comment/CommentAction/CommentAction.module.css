@@ -35,3 +35,22 @@
     flex: none;
     height: 25px;
 }
+
+.CommentAction-foot-actions {
+    float: right;
+}
+
+.CommentAction-foot-action {
+    line-height: 25px;
+    vertical-align: top;
+}
+.CommentAction-foot-action-icon {
+    cursor: pointer;
+    margin-right: 5px;
+}
+.CommentAction-foot-action-value {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+    margin-right: 10px;
+}
