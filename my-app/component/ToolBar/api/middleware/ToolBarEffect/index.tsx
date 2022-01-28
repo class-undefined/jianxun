@@ -10,10 +10,19 @@ interface HandlerData {
     template: React.FC<ChildrenProps>, // 发送数据
 }
 
+export enum EventCommand {
+    CLOSE, // 关闭窗口
+}
+
+interface EventData {
+    command: EventCommand,
+}
 
 type EventType = {
-    render: HandlerData
+    render: HandlerData,
+    command: EventData
 }
+
 
 /**
  * 用于通知ToolBar进行渲染指定组件
@@ -47,4 +56,23 @@ export class ToolBarEffect {
         if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
         this.emitter.emit("render", {sender, template})
     }
+
+    /**
+     * 监听事件消息发送，处理对应事件消息
+     * @param callback 处理command事件的回调函数
+     */
+    public static listen(callback: (e: EventData) => void) {
+        this.emitter.off("command")
+        this.emitter.on("command", callback)
+    }
+
+    /**
+     * 发送事件命令给command处理函数
+     * @param command 事件命令
+     */
+    public static send(command: EventCommand) {
+        if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
+        this.emitter.emit("command", {command})
+    }
+
 }

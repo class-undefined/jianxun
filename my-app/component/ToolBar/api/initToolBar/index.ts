@@ -49,8 +49,6 @@ const actions: ToolBarAction[] = [
 export const initData = (): InitData => {
     /* 导入插件至actions */
     PluginConfig.registerPlugins(actions)
-    console.log(actions);
-    
     return {
         article, actions
     }

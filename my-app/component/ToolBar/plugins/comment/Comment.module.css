@@ -2,4 +2,30 @@
     height: 70vh;
     width: 100%;
     border: 1px #000 solid;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    z-index: 1;
+}
+
+.Comment-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Comment-header-title {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    text-indent: 50px;
+    /* 根据action的flex-basis设置，因为其占用了flex-basis大小的像素*/
+}
+
+.Comment-header-action {
+    flex: 0;
+    cursor: pointer;
+    flex-basis: 50px;
+    height: 100%;
 }
