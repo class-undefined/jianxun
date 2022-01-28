@@ -9,3 +9,11 @@ export const getArticleData = (data: {articleId: string}) => {
         data
     })
 }
+
+export const geArticleComment = (data: {articleId: string}) => {
+    return service({
+        url: "/api/comment",
+        method: "POST",
+        data
+    })
+}

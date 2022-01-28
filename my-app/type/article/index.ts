@@ -1,3 +1,5 @@
+import { User } from "../user";
+
 /* 文章标签 */
 export interface ArticleTag {
     id: string | number, // 表情名
@@ -18,4 +20,17 @@ export interface Article {
         isDone: boolean //是否已点赞
     }, // 点赞数
     share: number // 分享数
+}
+
+/* 文章评论 */
+export interface ArticleComment {
+    id: string | number, // 评论id
+    type: number, // 评论类型，是文字还是语音
+    user: User, // 用户
+    btc: {
+        share: number,
+        comment: number,
+        like: number
+    },// 三连: 分享、评论、点赞
+
 }
