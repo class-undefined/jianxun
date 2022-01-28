@@ -72,7 +72,7 @@ export const ToolBar: React.FC<ToolBarProps> = () => {
     useToolBarEffect.listen((e) => {
         const {command} = e
         if (command === EventCommand.CLOSE) {
-            setRenderTemplate(_template)
+            setRenderTemplate(() => _template)
         }
     })
     const expendHandle = () => {

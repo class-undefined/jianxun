@@ -30,10 +30,12 @@ type EventType = {
 export class useToolBarEffect {
     private static emitter: Emitter<EventType> = mitt<EventType>() // 事件发送器
 
-    private static isRegister = false
+    private static isHandle = false
+
+    private static isListen = false
 
     private constructor() {
-        throw new Error("为了避免事件全局污染，ToolBarEffect构造函数已被禁用，禁止调用。")
+        throw new Error("为了避免事件全局污染，useToolBarEffect构造函数已被禁用，禁止调用。")
     }
 
     /**
@@ -42,9 +44,9 @@ export class useToolBarEffect {
      * @param callback 处理更新消息的回调函数
      */
     public static useHandle(callback: (e: HandlerData) => void) {
-        this.isRegister = true
-        this.emitter.off("render")
-        this.emitter.on("render", callback)
+        useToolBarEffect.isHandle = true
+        useToolBarEffect.emitter.off("render")
+        useToolBarEffect.emitter.on("render", callback)
     }
 
     /**
@@ -53,8 +55,8 @@ export class useToolBarEffect {
      * @param callback 返回需要对ToolBar进行更新的回调函数
      */
     public static render(sender: ToolBarPluginType, template: React.FC<ChildrenProps> ) {
-        if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
-        this.emitter.emit("render", {sender, template})
+        if (useToolBarEffect.isHandle === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
+        useToolBarEffect.emitter.emit("render", {sender, template})
     }
 
     /**
@@ -62,9 +64,9 @@ export class useToolBarEffect {
      * @param callback 处理command事件的回调函数
      */
     public static listen(callback: (e: EventData) => void) {
-        if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
-        this.emitter.off("command")
-        this.emitter.on("command", callback)
+        useToolBarEffect.isListen = true
+        useToolBarEffect.emitter.off("command")
+        useToolBarEffect.emitter.on("command", callback)
     }
 
     /**
@@ -72,8 +74,8 @@ export class useToolBarEffect {
      * @param command 事件命令
      */
     public static send(command: EventCommand) {
-        if (this.isRegister === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
-        this.emitter.emit("command", {command})
+        if (useToolBarEffect.isListen === false) throw new Error("监听函数在ToolBar组件中尚未注册运行，调用该函数的生命周期过早，需要等待至ToolBar组件渲染完成阶段后调用！");
+        useToolBarEffect.emitter.emit("command", {command})
     }
 
 }
