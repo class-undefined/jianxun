@@ -1,7 +1,7 @@
-import { SvgIcon } from "../../../SvgIcon/SvgIcon";
-import { useToolBarEffect } from "../../api/middleware/ToolBarEffect";
-import { ChildrenProps } from "../../api/middleware/ToolBarEffect/template";
-import { closeModal } from "../api";
+import { SvgIcon } from "../../../../SvgIcon/SvgIcon";
+import { useToolBarEffect } from "../../../api/middleware/ToolBarEffect";
+import { ChildrenProps } from "../../../api/middleware/ToolBarEffect/template";
+import { closeModal } from "../../api";
 import styles from "./Comment.module.css"
 export const Comment = (props: ChildrenProps) => {
     console.log(props)
