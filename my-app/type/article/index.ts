@@ -32,5 +32,6 @@ export interface ArticleComment {
         comment: number,
         like: number
     },// 三连: 分享、评论、点赞
+    content: string
 
 }

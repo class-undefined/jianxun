@@ -4,7 +4,7 @@ import { Result } from '../../utils/api/response/index'
 import { ArticleComment } from '../../type/article'
 import { createArticleComment } from '../../utils/mock/comment'
 const mockArticleCommentData = ():ArticleComment[] => {
-    const size = 10
+    const size = 5
     const result = [] as ArticleComment[]
     for (let i = 0; i < size; i++) {
         result.push(createArticleComment())
@@ -16,5 +16,5 @@ export default function handler(
     res: NextApiResponse<Response>
 ) {
     // if (req.method !== "POST") res.status(200).json(Result.create().Error('Request not allowed').build())
-    res.status(200).json(Result.create().setData(mockArticleCommentData()).Ok(null).build())
+    res.status(200).json(Result.create().setData({comments: mockArticleCommentData()}).Ok(null).build())
 }

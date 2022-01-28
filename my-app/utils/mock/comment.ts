@@ -14,6 +14,7 @@ export const createArticleComment = ():ArticleComment => {
             comment: Mock.Random.integer(0, 100000),
             like: Mock.Random.integer(0, 100000),
             share: Mock.Random.integer(0, 100000)
-        }
+        },
+        content: Mock.Random.cparagraph() // 段落最多150字符
     }
 }

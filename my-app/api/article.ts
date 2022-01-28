@@ -10,7 +10,7 @@ export const getArticleData = (data: {articleId: string}) => {
     })
 }
 
-export const geArticleComment = (data: {articleId: string}) => {
+export const geArticleComment = (data: {articleId: string | number}) => {
     return service({
         url: "/api/comment",
         method: "POST",
