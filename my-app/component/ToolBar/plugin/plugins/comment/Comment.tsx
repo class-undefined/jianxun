@@ -26,7 +26,7 @@ export const Comment = (props: ChildrenProps) => {
     }
     
 
-    const change = (e: FocusEvent<HTMLDivElement>) => {
+    const changeHandle = (e: FocusEvent<HTMLDivElement>) => {
         e.preventDefault()
         const value = e.target.innerText
         const ZERO = isFirstEdit ? 0 : 1 // dom的问题，首次写入数据时长度为0，一旦写入数据后长度会变为1，且组件未销毁前该情况不会改变
@@ -96,7 +96,8 @@ export const Comment = (props: ChildrenProps) => {
                 <div contentEditable
                     className={textareaClassName}
                     onBeforeInput={verifyHandle}
-                    onInput={change}></div>
+                    onInput={changeHandle}>
+                </div>
                 <SendBtn/>
             </div>
         </div>
