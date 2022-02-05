@@ -42,7 +42,7 @@ const Actions: React.FC<ActionsProps> = (props: ActionsProps) => {
     const {className, data} = props
     return (
         <span className={className ? className : ""}>
-            {data.map(action => <Action data={action}/>)}
+            {data.map(action => <Action key={action.name + action.value.toString()} data={action}/>)}
         </span>
     )
 }

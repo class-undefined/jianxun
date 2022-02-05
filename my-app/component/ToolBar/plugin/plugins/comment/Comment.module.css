@@ -28,6 +28,7 @@
     animation-fill-mode: both;
     animation-name: open;
     animation-timing-function: cubic-bezier(.44,.7,.52,1.06);
+    
 }
 
 .Comment-container-close {
@@ -58,7 +59,7 @@
 }
 
 .Comment-body {
-    height: calc(78vh - 50px - 55px);
+    height: calc(78vh - 50px);
     width: 100%;
     padding: 0 20px;
     overflow-y: scroll;
@@ -67,21 +68,38 @@
     list-style-type: none;
 }
 
+
 .Comment-foot-container {
-    height: 55px;
+    position: absolute;
+    bottom: 0;
+    min-height: 55px;
+    width: 100%;
     background-color: rgb(239,239,239);
     padding: 10px;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
+    
 }
 .Comment-input-talk {
-    flex: 1 0;
+    flex: 0 0;
+    flex-basis: 100%;
     border: none;
     border-radius: 5px;
-    text-indent: 1em;
-    font-size: 1em;
+    padding: 0 0em;
+    font-size: 15px;
     outline: medium;
-    margin-right: 10px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 3px;
+    transition: 0.3s;
+    
+}
+
+.Comment-input-talk-active {
+    flex-basis: calc(100% - 50px - 10px);
 }
 
 
@@ -93,7 +111,12 @@
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
-    /* transition: 0.1s; */
+    max-height: 40px;
+    margin-left: 10px;
+}
+
+.Comment-btn-send-container-hidden {
+    display: none;
 }
 
 .Comment-btn-send-container:hover {
@@ -112,3 +135,4 @@
     flex: 1;
     transform: translateY(45%);
 }
+
