@@ -103,3 +103,5 @@ export const Comment = (props: ChildrenProps) => {
         </div>
     )
 }
+
+// BUG: 按钮每次出现都会重复请求图片数据
