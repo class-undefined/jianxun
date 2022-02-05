@@ -86,14 +86,24 @@
 
 
 .Comment-btn-send-container {
-    background-color: green;
+    background-color: hsl(154, 74%, 40%);
     flex: 0;
     flex-basis: 50px;
     display: flex;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.1s;
 }
+
+.Comment-btn-send-container:hover {
+    background-color: hsl(154, 74%, 35%);
+}
+
+.Comment-btn-send-container:active {
+    background-color: hsl(154, 74%, 30%);
+}
+
 .Comment-btn-send-icon {
     flex: 1;
     transform: translateY(45%);
