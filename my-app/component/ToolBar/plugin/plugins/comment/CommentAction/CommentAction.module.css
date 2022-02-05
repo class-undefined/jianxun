@@ -26,7 +26,8 @@
 
 .CommentAction-nick {
     color: rgb(53, 94, 170);
-
+    display: inline-block;
+    cursor: pointer;
 }
 .CommentAction-comment {
     margin-top: 5px;

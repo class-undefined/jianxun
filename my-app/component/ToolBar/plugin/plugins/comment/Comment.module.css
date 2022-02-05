@@ -20,7 +20,7 @@
 .Comment-container {
     height:0;
     width: 100%;
-    border: 1px #000 solid;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     z-index: 1;

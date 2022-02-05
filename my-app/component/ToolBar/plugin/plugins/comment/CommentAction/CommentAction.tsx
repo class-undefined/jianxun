@@ -61,7 +61,7 @@ export const CommentAction: React.FC<CommentActionProps> = (props: CommentAction
                     <img src={avatar} alt="头像" width={"48px"} height={"48px"} />
                 </div>
                 <div className={styles["CommentAction-body"]}>
-                    <p className={styles["CommentAction-nick"]}>{nick}</p>
+                    <span className={styles["CommentAction-nick"]}>{nick}</span>
                     <p className={styles["CommentAction-comment"]}>{content}</p>
                 </div>
             </div>
