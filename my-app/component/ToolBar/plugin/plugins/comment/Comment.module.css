@@ -58,7 +58,7 @@
 }
 
 .Comment-body {
-    height: calc(78vh - 50px - 6vh);
+    height: calc(78vh - 50px - 55px);
     width: 100%;
     padding: 0 20px;
     overflow-y: scroll;
@@ -68,7 +68,7 @@
 }
 
 .Comment-foot-container {
-    height: 6vh;
+    height: 55px;
     background-color: rgb(239,239,239);
     padding: 10px;
     display: flex;
@@ -93,11 +93,15 @@
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.1s;
+    /* transition: 0.1s; */
 }
 
 .Comment-btn-send-container:hover {
     background-color: hsl(154, 74%, 35%);
+}
+
+.Comment-btn-send-container:touch {
+    background-color: hsl(154, 74%, 30%);
 }
 
 .Comment-btn-send-container:active {
