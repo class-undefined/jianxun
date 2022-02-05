@@ -4,7 +4,7 @@
 import axios from 'axios'
 import { Response } from '../response/type'
 const config = {
-    baseUrl: "http://localhost:3000/"
+    baseUrl: "/"
 }
 // create an axios instance
 const service = axios.create({
