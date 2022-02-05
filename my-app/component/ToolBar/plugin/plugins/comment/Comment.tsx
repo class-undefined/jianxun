@@ -50,7 +50,8 @@ export const Comment = (props: ChildrenProps) => {
             </div>
             <Comments />
             <div className={styles["Comment-foot-container"]}>
-                {/* <input type="text" /> */}
+                <input placeholder="说点什么吧" className={styles["Comment-input-talk"]} type="text" /*onFocus={}*//>
+                
             </div>
         </div>
     )
