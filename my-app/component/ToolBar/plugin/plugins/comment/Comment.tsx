@@ -42,6 +42,13 @@ export const Comment = (props: ChildrenProps) => {
             </ul>
         )
     }
+    const SendBtn = () => {
+        return (
+            <div className={styles["Comment-btn-send-container"]}>
+                <SvgIcon className={styles["Comment-btn-send-icon"]} width={18} height={18} iconClass="send"/>
+            </div>
+        )
+    }
     return (
         <div className={rootClassName}>
             <div className={styles["Comment-header"]}>
@@ -51,7 +58,7 @@ export const Comment = (props: ChildrenProps) => {
             <Comments />
             <div className={styles["Comment-foot-container"]}>
                 <input placeholder="说点什么吧" className={styles["Comment-input-talk"]} type="text" /*onFocus={}*//>
-                
+                <SendBtn/>
             </div>
         </div>
     )
