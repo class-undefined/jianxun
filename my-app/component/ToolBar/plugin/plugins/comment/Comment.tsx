@@ -1,14 +1,13 @@
-import { useEffect, useState, FocusEvent, FormEvent } from "react";
-import { geArticleComment } from "../../../../../api/article";
+import { useEffect, useState } from "react";
+import { getArticleComment } from "../../../../../api/article";
 import { ArticleComment } from "../../../../../type/article";
 import { Response, StatusCode } from "../../../../../utils/api/response/type";
-import { ClassNameBuilder } from "../../../../../utils/style";
 import { SvgIcon } from "../../../../SvgIcon/SvgIcon";
 import { ChildrenProps } from "../../../api/middleware/ToolBarEffect/template";
 import { closeModal } from "../../api";
-import styles from "./Comment.module.css"
 import { Comments } from "./components/Comments/Comments";
 import { Foot } from "./components/Foot/Foot";
+import styles from "./Comment.module.css"
 
 export const Comment = (props: ChildrenProps) => {
     const {article} = props
@@ -22,7 +21,7 @@ export const Comment = (props: ChildrenProps) => {
     }
     const [comments, setComments] = useState([] as ArticleComment[])
     useEffect(() => {
-        geArticleComment({articleId: id}).then((response: unknown) => {
+        getArticleComment({articleId: id}).then((response: unknown) => {
             const {code, data} = response as Response
             if (code !== StatusCode.SUCCESS) {
                 alert("what's up?")
