@@ -9,15 +9,18 @@ import { ChildrenProps } from "../../../api/middleware/ToolBarEffect/template";
 import { closeModal } from "../../api";
 import styles from "./Comment.module.css"
 import { CommentAction } from "./CommentAction/CommentAction";
-
+interface FootClassName {
+    sendBtn: string,
+    textarea: string
+}
 const Foot = () => {
     const [isFirstEdit, setIsFirstEdit] = useState(true)
     const textareaClassController = ClassNameBuilder.from([styles["Comment-input-talk"], styles["Comment-input-talk-active"]]).build()
-    const [sendBtnClassName, setSendBtnClassName] = useState(styles["Comment-btn-send-container-hidden"])
-    const [textareaClassName, setTextareaClassName] = useState(textareaClassController(false))
-    const SendBtn = () => {
+    const sendBtnClassController = ClassNameBuilder.from([styles["Comment-btn-send-container"], styles["Comment-btn-send-container-hidden"]]).build()
+    const [footClassName, setFootClassName] = useState({sendBtn: sendBtnClassController(true), textarea: textareaClassController(false)} as FootClassName)
+    const SendBtn = (props: {className: string}) => {
         return (
-            <div className={sendBtnClassName}>
+            <div className={props.className}>
                 <SvgIcon className={styles["Comment-btn-send-icon"]} width={18} height={18} iconClass="send"/>
             </div>
         )
@@ -26,13 +29,18 @@ const Foot = () => {
         e.preventDefault()
         const value = e.target.innerText
         const ZERO = isFirstEdit ? 0 : 1 // dom的问题，首次写入数据时长度为0，一旦写入数据后长度会变为1，且组件未销毁前该情况不会改变
-        setIsFirstEdit(false)
+        if (isFirstEdit) setIsFirstEdit(false)
         if (value.length === ZERO) {
-            setTextareaClassName(textareaClassController(false))
-            setSendBtnClassName(styles["Comment-btn-send-container-hidden"])
+            setFootClassName({
+                textarea: textareaClassController(false),
+                sendBtn: sendBtnClassController(true)
+            })
         } else {
-            setTextareaClassName(textareaClassController(true))
-            setSendBtnClassName(styles["Comment-btn-send-container"])
+            if (footClassName.sendBtn === sendBtnClassController(false) && footClassName.textarea === textareaClassController(true)) return
+            setFootClassName({
+                textarea: textareaClassController(true),
+                sendBtn: sendBtnClassController(false)
+            })
         }
     }
 
@@ -51,11 +59,11 @@ const Foot = () => {
     return (
         <div className={styles["Comment-foot-container"]}>
             <div contentEditable
-                className={textareaClassName}
+                className={footClassName.textarea}
                 onBeforeInput={verifyHandle}
                 onInput={changeHandle}>
             </div>
-            <SendBtn/>
+            <SendBtn key={1} className={footClassName.sendBtn}/>
         </div>
     )
 }
@@ -106,5 +114,3 @@ export const Comment = (props: ChildrenProps) => {
         </div>
     )
 }
-
-// BUG: 
