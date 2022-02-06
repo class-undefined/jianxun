@@ -1,5 +1,5 @@
 import { User } from "../user";
-type ID = string | number
+export type ID = string | number
 /* 文章标签 */
 export interface ArticleTag {
     id: ID, // 表情名

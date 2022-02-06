@@ -1,5 +1,5 @@
 import Mock from "mockjs";
-import { ArticleComment, SecondaryComment } from "../../type/article";
+import { ArticleComment, ID, SecondaryComment } from "../../type/article";
 import { createBTC } from "./btc";
 import { createUser } from "./user";
 
@@ -16,10 +16,10 @@ export const createArticleComment = ():ArticleComment => {
 }
 
 /* mock 二级评论 */
-export const createSecondaryComment = (): SecondaryComment => {
+export const createSecondaryComment = (rootId: ID): SecondaryComment => {
     return {
         id: Mock.Random.id(),
-        rootId: Mock.Random.id(),
+        rootId,
         btc: createBTC(),
         preComment: null,
         user: createUser(),
