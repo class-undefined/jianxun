@@ -9,6 +9,8 @@ interface SecondaryCommentProps {
 /* 二级评论 */
 export const SecondaryComment: React.FC<SecondaryCommentProps> = (props: SecondaryCommentProps) => {
     const [rootClassName, setRootClassName] = useState(styles["SecondaryComment-container"])
+    console.log(props.comment);
+    
     const close = () => {
         setRootClassName(styles["SecondaryComment-container"] + " " + styles["SecondaryComment-container-close"])
         setTimeout(() => {
@@ -18,7 +20,7 @@ export const SecondaryComment: React.FC<SecondaryCommentProps> = (props: Seconda
 
     return (
         <div className={rootClassName}>
-            
+            SecondaryComment
         </div>
     )
 

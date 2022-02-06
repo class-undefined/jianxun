@@ -8,6 +8,7 @@ import { closeModal } from "../../api";
 import { Comments } from "./components/Comments/Comments";
 import { Foot } from "./components/Foot/Foot";
 import styles from "./Comment.module.css"
+import { Drawer } from "./components/Drawer/Drawer";
 
 export const Comment = (props: ChildrenProps) => {
     const {article} = props
@@ -39,6 +40,7 @@ export const Comment = (props: ChildrenProps) => {
             </div>
             <Comments className={styles["Comment-body"]} comments={comments}/>
             <Foot />
+            <Drawer/>
         </div>
     )
 }

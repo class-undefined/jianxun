@@ -50,16 +50,6 @@ const Actions: React.FC<ActionsProps> = (props: ActionsProps) => {
     )
 }
 
-const Template = (props: {children?: React.FC}) => {
-    const {children} = props
-    const F = children
-    const T = <template />
-    return (
-        <div className={styles.template}>
-            {F || T}
-        </div>
-    )
-}
 
 export const CommentAction: React.FC<CommentActionProps> = (props: CommentActionProps) => {
     const {user: {nick, avatar}, type, btc: {comment, like, share}, content} = props.comment
@@ -83,7 +73,6 @@ export const CommentAction: React.FC<CommentActionProps> = (props: CommentAction
             <div className={styles["CommentAction-foot"]}>
                 <Actions className={styles["CommentAction-foot-actions"]} data={actions}/>
             </div>
-            <Template />
         </div>
     )
 }
