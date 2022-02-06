@@ -10,22 +10,18 @@ import { closeModal } from "../../api";
 import styles from "./Comment.module.css"
 import { CommentAction } from "./CommentAction/CommentAction";
 
-export const Comment = (props: ChildrenProps) => {
-    const {article} = props
-    const {id, comment} = article
-    const [rootClassName, setRootClassName] = useState(styles["Comment-container"])
+const Foot = () => {
+    const [isFirstEdit, setIsFirstEdit] = useState(true)
     const textareaClassController = ClassNameBuilder.from([styles["Comment-input-talk"], styles["Comment-input-talk-active"]]).build()
     const [sendBtnClassName, setSendBtnClassName] = useState(styles["Comment-btn-send-container-hidden"])
     const [textareaClassName, setTextareaClassName] = useState(textareaClassController(false))
-    const [isFirstEdit, setIsFirstEdit] = useState(true)
-    const close = () => {
-        setRootClassName(styles["Comment-container"] + " " + styles["Comment-container-close"])
-        setTimeout(() => {
-            closeModal()
-        }, 450)
+    const SendBtn = () => {
+        return (
+            <div className={sendBtnClassName}>
+                <SvgIcon className={styles["Comment-btn-send-icon"]} width={18} height={18} iconClass="send"/>
+            </div>
+        )
     }
-    
-
     const changeHandle = (e: FocusEvent<HTMLDivElement>) => {
         e.preventDefault()
         const value = e.target.innerText
@@ -52,8 +48,28 @@ export const Comment = (props: ChildrenProps) => {
         /* 大于151是因为，空时innerText.length === 1 */
         if (preLength + newValLength > 151) e.preventDefault()
     }
+    return (
+        <div className={styles["Comment-foot-container"]}>
+            <div contentEditable
+                className={textareaClassName}
+                onBeforeInput={verifyHandle}
+                onInput={changeHandle}>
+            </div>
+            <SendBtn/>
+        </div>
+    )
+}
 
-
+export const Comment = (props: ChildrenProps) => {
+    const {article} = props
+    const {id, comment} = article
+    const [rootClassName, setRootClassName] = useState(styles["Comment-container"])
+    const close = () => {
+        setRootClassName(styles["Comment-container"] + " " + styles["Comment-container-close"])
+        setTimeout(() => {
+            closeModal()
+        }, 450)
+    }
     const [comments, setComments] = useState([] as ArticleComment[])
     useEffect(() => {
         geArticleComment({articleId: id}).then((response: unknown) => {
@@ -78,13 +94,7 @@ export const Comment = (props: ChildrenProps) => {
             </ul>
         )
     }
-    const SendBtn = () => {
-        return (
-            <div className={sendBtnClassName}>
-                <SvgIcon className={styles["Comment-btn-send-icon"]} width={18} height={18} iconClass="send"/>
-            </div>
-        )
-    }
+    
     return (
         <div className={rootClassName}>
             <div className={styles["Comment-header"]}>
@@ -92,16 +102,9 @@ export const Comment = (props: ChildrenProps) => {
                 <SvgIcon onClick={close} iconClass="close" width={32} height={32} className={styles["Comment-header-action"]}/>
             </div>
             <Comments />
-            <div className={styles["Comment-foot-container"]}>
-                <div contentEditable
-                    className={textareaClassName}
-                    onBeforeInput={verifyHandle}
-                    onInput={changeHandle}>
-                </div>
-                <SendBtn/>
-            </div>
+            <Foot />
         </div>
     )
 }
 
-// BUG: 按钮每次出现都会重复请求图片数据
+// BUG: 
