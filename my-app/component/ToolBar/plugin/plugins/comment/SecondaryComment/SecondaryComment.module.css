@@ -1,0 +1,68 @@
+@keyframes open {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100vh;
+    }
+}
+
+
+@keyframes close {
+    from {
+        height: 100vh;
+    }
+    to {
+        height: 0;
+    }
+}
+.SecondaryComment-container {
+    height:0;
+    width: 100%;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    z-index: 1;
+    animation-duration: 0.45s;
+    animation-fill-mode: both;
+    animation-name: open;
+    animation-timing-function: cubic-bezier(.44,.7,.52,1.06);
+}
+
+.SecondaryComment-container-close {
+    animation-name: close;
+}
+
+.SecondaryComment-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.SecondaryComment-header-title {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    text-indent: 50px;
+    /* 根据action的flex-basis设置，因为其占用了flex-basis大小的像素*/
+}
+
+.SecondaryComment-header-action {
+    flex: 0;
+    cursor: pointer;
+    flex-basis: 50px;
+    height: 100%;
+}
+
+.SecondaryComment-body {
+    height: calc(100vh - 50px);
+    width: 100%;
+    padding: 0 20px;
+    overflow-y: scroll;
+}
+.SecondaryComment-body li {
+    list-style-type: none;
+}
+
