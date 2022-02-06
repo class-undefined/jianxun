@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getArticleComment } from "../../../../../api/article";
 import { ArticleComment } from "../../../../../type/article";
 import { Response, StatusCode } from "../../../../../utils/api/response/type";
@@ -8,7 +8,16 @@ import { closeModal } from "../../api";
 import { Comments } from "./components/Comments/Comments";
 import { Foot } from "./components/Foot/Foot";
 import styles from "./Comment.module.css"
-
+const Template = (props: {children?: React.FC}) => {
+    const {children} = props
+    const F = children
+    const T = <template />
+    return (
+        <div className={styles["template"]}>
+            {F || T}
+        </div>
+    )
+}
 export const Comment = (props: ChildrenProps) => {
     const {article} = props
     const {id, comment} = article
@@ -39,6 +48,7 @@ export const Comment = (props: ChildrenProps) => {
             </div>
             <Comments className={styles["Comment-body"]} comments={comments}/>
             <Foot />
+            <Template />
         </div>
     )
 }
