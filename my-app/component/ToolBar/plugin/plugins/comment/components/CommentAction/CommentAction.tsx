@@ -1,5 +1,5 @@
-import { ArticleComment } from "../../../../../../type/article";
-import { SvgIcon } from "../../../../../SvgIcon/SvgIcon";
+import { ArticleComment } from "../../../../../../../type/article";
+import { SvgIcon } from "../../../../../../SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"
 import { onClickHandles } from "./handle";
 interface CommentActionProps {

@@ -1,4 +1,4 @@
-import { ArticleComment } from "../../../../../../type/article";
+import { ArticleComment } from "../../../../../../../type/article";
 
 export const onClickHandles = {
     share: (comment: ArticleComment) => {
