@@ -10,7 +10,7 @@ interface TemplateProps {
 }
 const Template: React.FC<TemplateProps> = (props: TemplateProps) => {
     const F = props.render
-    console.log("render")
+    // console.log("render")
     return (
         <div className={styles["template-container"]}>
             <F article={props.article}/>
