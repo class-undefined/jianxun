@@ -1,14 +1,16 @@
 import { ArticleComment } from "../../../../../../type/article";
 import { SvgIcon } from "../../../../../SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"
+import { onClickHandles } from "./handle";
 interface CommentActionProps {
     className?: string,
-    comment: ArticleComment
+    comment: ArticleComment,
 }
 
 interface ActionData {
     name: string,
-    value: number
+    value: number,
+    onClick?: () => void
 }
 
 interface ActionProps {
@@ -22,11 +24,11 @@ interface ActionsProps {
 }
 
 const Action: React.FC<ActionProps> = (props: ActionProps) => {
-    const {name, value} = props.data
+    const {name, value, onClick} = props.data
     const content = value === 0 ? "" : value.toString()
     const className = props.className ? props.className : ""
     return (
-        <span className={className}>
+        <span className={className} onClick={onClick}>
             <SvgIcon className={`${styles["CommentAction-foot-action"]} ${styles["CommentAction-foot-action-icon"]}`} 
                 iconClass={name} 
                 width={18} 
@@ -38,21 +40,23 @@ const Action: React.FC<ActionProps> = (props: ActionProps) => {
     )
 }
 
+
 const Actions: React.FC<ActionsProps> = (props: ActionsProps) => {
     const {className, data} = props
     return (
         <span className={className ? className : ""}>
-            {data.map(action => <Action key={action.name + action.value.toString()} data={action}/>)}
+            {data.filter(action => action.value !== -1).map(action => <Action key={action.name + action.value.toString()} data={action}/>)}
         </span>
     )
 }
 
 export const CommentAction: React.FC<CommentActionProps> = (props: CommentActionProps) => {
     const {user: {nick, avatar}, type, btc: {comment, like, share}, content} = props.comment
+    // 为-1则不进行渲染
     const actions: ActionData[] = [
-        {name: "share", value: share},
-        {name: "comment", value: comment}, 
-        {name: "like", value: like}]
+        {name: "share", value: share || -1, onClick: () => onClickHandles.share(props.comment)},
+        {name: "comment", value: comment || -1, onClick: () => onClickHandles.comment(props.comment)}, 
+        {name: "like", value: like, onClick: () => onClickHandles.like(props.comment)}]
     const actionsClassName = styles["CommentAction-foot-action"]
     return (
         <div className={styles["CommentAction-contaienr"]}>

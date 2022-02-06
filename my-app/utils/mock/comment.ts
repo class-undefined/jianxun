@@ -4,7 +4,7 @@ import { ArticleComment } from "../../type/article";
 export const createArticleComment = ():ArticleComment => {
     return {
         id: Mock.Random.id(),
-        type: Mock.Random.pick([0, 1]),
+        type: Mock.Random.pick([0, 1]), // 文字还是语音
         user: {
             id: Mock.Random.id(),
             nick: Mock.Random.cname(),
@@ -15,6 +15,7 @@ export const createArticleComment = ():ArticleComment => {
             like: Mock.Random.integer(0, 100000),
             share: Mock.Random.integer(0, 100000)
         },
-        content: Mock.Random.cparagraph() // 段落最多150字符
+        content: Mock.Random.cparagraph(), // 段落最多150字符
+        
     }
 }

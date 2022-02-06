@@ -28,8 +28,8 @@ export interface ArticleComment {
     type: number, // 评论类型，是文字还是语音
     user: User, // 用户
     btc: {
-        share: number,
-        comment: number,
+        share?: number,
+        comment?: number,
         like: number
     },// 三连: 分享、评论、点赞
     content: string
