@@ -63,7 +63,7 @@ const Foot = () => {
                 onBeforeInput={verifyHandle}
                 onInput={changeHandle}>
             </div>
-            <SendBtn key={1} className={footClassName.sendBtn}/>
+            <SendBtn className={footClassName.sendBtn}/>
         </div>
     )
 }
