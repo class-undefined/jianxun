@@ -17,7 +17,7 @@ export const SecondaryComment: React.FC<SecondaryCommentProps> = (props: Seconda
     }
 
     return (
-        <div>
+        <div className={rootClassName}>
             
         </div>
     )

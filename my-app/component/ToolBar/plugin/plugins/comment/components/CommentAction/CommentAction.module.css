@@ -56,3 +56,8 @@
     line-height: 22px;
     margin-right: 10px;
 }
+
+.template {
+    position: absolute;
+    width: 100%;
+}
