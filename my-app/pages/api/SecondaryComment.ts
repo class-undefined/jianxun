@@ -3,7 +3,6 @@ import { ID, SecondaryComment } from "../../type/article"
 import { Response } from '../../utils/api/response/type'
 import { Result } from '../../utils/api/response/index'
 import { createSecondaryComment } from "../../utils/mock/comment"
-import Mock from "mockjs";
 const mockSecondaryComment = (rootId: ID): SecondaryComment[] => {
     const size = 5
     const result = [] as SecondaryComment[]
