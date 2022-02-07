@@ -5,7 +5,7 @@ import { Response, StatusCode } from "../../../utils/api/response/type";
 import { SvgIcon } from "../../../component/SvgIcon/SvgIcon";
 import { ChildrenProps } from "../../../component/ToolBar/api/middleware/ToolBarEffect/template";
 import { closeModal } from "../../../component/ToolBar/plugin/api";
-import { Comments } from "./components/Comments/Comments";
+import { Comments, createCommentAcion } from "./components/Comments/Comments";
 import { Foot } from "./components/Foot/Foot";
 import styles from "./Comment.module.css"
 import { Drawer } from "./components/Drawer/Drawer";
@@ -38,7 +38,7 @@ export const Comment = (props: ChildrenProps) => {
                 <p className={styles["Comment-header-title"]}>{comment}条评论</p>
                 <SvgIcon onClick={close} iconClass="close" width={32} height={32} className={styles["Comment-header-action"]}/>
             </div>
-            <Comments className={styles["Comment-body"]} comments={comments}/>
+            <Comments className={styles["Comment-body"]} render={() => createCommentAcion(comments)}/>
             <Foot />
             <Drawer/>
         </div>
