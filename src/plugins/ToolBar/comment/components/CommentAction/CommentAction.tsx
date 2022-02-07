@@ -16,26 +16,14 @@ interface CommentActionProps {
      * ```
      */
     type?: number // 表示显示哪些图标
+    onClick?: () => void
 }
 
-interface SCommentActionProps {
-    className?: string,
-    /** 文章单条评论数据 */
-    comment: SecondaryComment,
-    /**```
-     * share comment like
-     * 000 001 010 100 011 101 110 111
-     * 0    1   2   4   3   5   6   7
-     * 为1表示展示对应的图标，全部展示则为7，不填写type则默认为7
-     * ```
-     */
-    type?: number // 表示显示哪些图标
-}
 
 /* 一条评论列表 */
 export const CommentAction: React.FC<CommentActionProps> = (props: CommentActionProps) => {
     const {user: {nick, avatar}, type: articleType, btc: {comment, like, share}, content} = props.comment
-    const {type} = props
+    const {type, onClick} = props
     // 000 001 010 100 011 101 110 111
     // 0 1 2 4 3 5 6 7
     // 为1表示展示对应的图标，全部展示则为7
@@ -47,21 +35,10 @@ export const CommentAction: React.FC<CommentActionProps> = (props: CommentAction
     ].filter((_, index) => condition[index] === '1')
     return (
         <Comment image={avatar}
+            onClick={onClick}
             nick={nick}
             icons={actions}
             content={<span>{content}</span>}
         />
-    )
-}
-
-const SCommentAction = (props: SCommentActionProps) => {
-    const {id, rootId, content, user: {nick, avatar}, btc:{comment, like, share}, preComment} = props.comment
-    let Content: JSX.Element
-    if (preComment === null) Content = <span>{content}</span>
-    
-    return (
-        <div>
-
-        </div>
     )
 }
