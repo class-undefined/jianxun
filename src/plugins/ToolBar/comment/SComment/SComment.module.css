@@ -30,7 +30,6 @@
     animation-fill-mode: both;
     animation-name: open;
     animation-timing-function: cubic-bezier(.44,.7,.52,1.06);
-    padding: 0 10px;
 }
 
 .SecondaryComment-container-close {
@@ -44,6 +43,7 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .SecondaryComment-header-title {
@@ -63,13 +63,14 @@
 .SecondaryComment-body {
     height: calc(100vh - 50px);
     width: 100%;
-    padding: 0 20px;
+    padding: 0;
     overflow-y: scroll;
+    padding: 0 10px;
 }
 .SecondaryComment-body li {
     list-style-type: none;
 }
 
 .divier {
-    /* padding: 0 20px; */
+    padding: 0 10px;
 }
