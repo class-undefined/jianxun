@@ -2,7 +2,8 @@ import styles from "./Divider.module.css"
 
 interface DividerProps {
     contentPosition?: "left" | "right" | "center",
-    children?: JSX.Element
+    children?: JSX.Element,
+    className?: string
 }
 
 const styleMap = {
@@ -12,8 +13,9 @@ const styleMap = {
 }
 
 export const Divider = (props: DividerProps) => {
-    const {contentPosition, children} = props
+    const {contentPosition, children, className} = props
     const childrenClassName = `${styles.dividerText} ${styleMap[contentPosition || "center"]}`
+    const rootClassName = className ? `${styles.root} ${className}` : styles.root
     const Children = () => {
         if (!children) return null
         return (
@@ -23,7 +25,7 @@ export const Divider = (props: DividerProps) => {
         )
     }
     return (
-        <div>
+        <div className={rootClassName}>
             <div className={styles.divider}>
                 <Children />
             </div>
