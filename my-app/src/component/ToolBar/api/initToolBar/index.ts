@@ -1,5 +1,5 @@
 import { MouseEvent } from "react"
-import { Article } from "../../../../type/article"
+import { Article } from "../../../../../type/article"
 import { PluginConfig } from "../middleware/plugin"
 import { ToolBarPluginType } from "../middleware/plugin/type"
 import "../../plugin/plugins" // 读取插件，初始化插件配置
@@ -42,9 +42,6 @@ const actions: ToolBarAction[] = [
     {type: ToolBarPluginType.FAVORITE, icon: 'favorite', content: "收藏", fixed: false },
     {type: ToolBarPluginType.VOICE, icon: 'voice', content: "朗读", fixed: false }
 ]
-
-
-
 
 export const initData = (): InitData => {
     /* 导入插件至actions */

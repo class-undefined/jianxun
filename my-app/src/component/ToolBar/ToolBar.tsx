@@ -3,12 +3,12 @@
  */
 import { ToolBarItem } from "./children/ToolBarItem/ToolBarItem"
 import styles from './ToolBar.module.css'
-import { getArticleData } from "../../api/article"
+import { getArticleData } from "../../../api/article"
 import React, { useEffect, useState } from "react"
-import { Response, StatusCode } from "../../utils/api/response/type"
+import { Response, StatusCode } from "../../../utils/api/response/type"
 import { SvgIcon } from "../SvgIcon/SvgIcon"
-import { ClassNameBuilder } from "../../utils/style"
-import { Article } from "../../type/article"
+import { ClassNameBuilder } from "../../../utils/style"
+import { Article } from "../../../type/article"
 import { EventCommand, useToolBarEffect } from "./api/middleware/ToolBarEffect"
 import { initData } from "./api/initToolBar"
 import Template, { ChildrenProps } from "./api/middleware/ToolBarEffect/template"

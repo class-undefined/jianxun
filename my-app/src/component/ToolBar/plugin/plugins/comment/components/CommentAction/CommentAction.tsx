@@ -1,5 +1,5 @@
-import { ArticleComment, SecondaryComment } from "../../../../../../../type/article";
-import { baseConversion } from "../../../../../../../utils/number";
+import { ArticleComment, SecondaryComment } from "../../../../../../../../type/article";
+import { baseConversion } from "../../../../../../../../utils/number";
 import { ActionData, Comment } from "../../../../../../Comment/Comment";
 import { SvgIcon } from "../../../../../../SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"
@@ -55,8 +55,10 @@ export const CommentAction: React.FC<CommentActionProps> = (props: CommentAction
 }
 
 const SCommentAction = (props: SCommentActionProps) => {
-    const {id, rootId, user: {nick, avatar}, btc:{comment, like, share}, preComment} = props.comment
-    if (preComment === null)
+    const {id, rootId, content, user: {nick, avatar}, btc:{comment, like, share}, preComment} = props.comment
+    let Content: JSX.Element
+    if (preComment === null) Content = <span>{content}</span>
+    
     return (
         <div>
 

@@ -31,7 +31,7 @@ export const SvgIcon: React.FC<ISvg> = (props: any) => {
   const [svgModule, setSvgModule] = useState<IImport>()
 
   const getSvg = async () => {
-    const svg = await import(`../../static/icons/svg/${props.iconClass}.svg`)
+    const svg = await import(`../../../static/icons/svg/${props.iconClass}.svg`)
     setSvgModule(svg)
   }
 
