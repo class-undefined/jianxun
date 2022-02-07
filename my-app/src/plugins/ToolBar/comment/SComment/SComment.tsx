@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { ArticleComment, SecondaryComment } from "../../../../../../type/article"
-import { SvgIcon } from "../../../../../SvgIcon/SvgIcon"
-import { closeModal } from "../../../api"
+import { ArticleComment, SecondaryComment } from "../../../../type/article"
+import { SvgIcon } from "../../../../component/SvgIcon/SvgIcon"
+import { closeModal } from "../../../../component/ToolBar/plugin/api"
 import { CommentAction } from "../components/CommentAction/CommentAction"
-import { Divider } from "../../../../../Divider/Divider"
+import { Divider } from "../../../../component/Divider/Divider"
 import styles from "./SComment.module.css"
-import { getSecondaryComment } from "../../../../../../api/article"
-import { Response, StatusCode } from "../../../../../../utils/api/response/type"
+import { getSecondaryComment } from "../../../../api/article"
+import { Response, StatusCode } from "../../../../utils/api/response/type"
 interface SecondaryCommentProps {
     className?: string,
     comment: ArticleComment

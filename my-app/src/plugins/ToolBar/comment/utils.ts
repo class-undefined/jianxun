@@ -1,4 +1,4 @@
-import { SecondaryComment } from "../../../../../type/article"
+import { SecondaryComment } from "../../../type/article"
 
 export const sc2comment = (scomment: SecondaryComment) => {
     const {id, rootId, user: {nick, avatar}, btc:{comment, like, share}, preComment} = scomment

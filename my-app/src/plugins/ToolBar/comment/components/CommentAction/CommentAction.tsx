@@ -1,7 +1,7 @@
-import { ArticleComment, SecondaryComment } from "../../../../../../../type/article";
-import { baseConversion } from "../../../../../../../utils/number";
-import { ActionData, Comment } from "../../../../../../Comment/Comment";
-import { SvgIcon } from "../../../../../../SvgIcon/SvgIcon";
+import { ArticleComment, SecondaryComment } from "../../../../../type/article";
+import { baseConversion } from "../../../../../utils/number";
+import { ActionData, Comment } from "../../../../../component/Comment/Comment";
+import { SvgIcon } from "../../../../../component/SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"
 import { onClickHandles } from "./handle";
 interface CommentActionProps {

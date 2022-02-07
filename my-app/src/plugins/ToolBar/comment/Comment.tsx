@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getArticleComment } from "../../../../../api/article";
-import { ArticleComment } from "../../../../../type/article";
-import { Response, StatusCode } from "../../../../../utils/api/response/type";
-import { SvgIcon } from "../../../../SvgIcon/SvgIcon";
-import { ChildrenProps } from "../../../api/middleware/ToolBarEffect/template";
-import { closeModal } from "../../api";
+import { getArticleComment } from "../../../api/article";
+import { ArticleComment } from "../../../type/article";
+import { Response, StatusCode } from "../../../utils/api/response/type";
+import { SvgIcon } from "../../../component/SvgIcon/SvgIcon";
+import { ChildrenProps } from "../../../component/ToolBar/api/middleware/ToolBarEffect/template";
+import { closeModal } from "../../../component/ToolBar/plugin/api";
 import { Comments } from "./components/Comments/Comments";
 import { Foot } from "./components/Foot/Foot";
 import styles from "./Comment.module.css"
