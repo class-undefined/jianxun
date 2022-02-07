@@ -1,10 +1,20 @@
 import { ArticleComment } from "../../../../../../../type/article";
+import { baseConversion } from "../../../../../../../utils/number";
 import { SvgIcon } from "../../../../../../SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"
 import { onClickHandles } from "./handle";
 interface CommentActionProps {
     className?: string,
+    /** 文章单条评论数据 */
     comment: ArticleComment,
+    /**```
+     * share comment like
+     * 000 001 010 100 011 101 110 111
+     * 0    1   2   4   3   5   6   7
+     * 为1表示展示对应的图标，全部展示则为7，不填写type则默认为7
+     * ```
+     */
+    type?: number // 表示显示哪些图标
 }
 
 interface ActionData {
@@ -45,19 +55,24 @@ const Actions: React.FC<ActionsProps> = (props: ActionsProps) => {
     const {className, data} = props
     return (
         <span className={className ? className : ""}>
-            {data.filter(action => action.value !== -1).map(action => <Action key={action.name + action.value.toString()} data={action}/>)}
+            {data.map(action => <Action key={action.name + action.value.toString()} data={action}/>)}
         </span>
     )
 }
 
-
+/* 一条评论列表 */
 export const CommentAction: React.FC<CommentActionProps> = (props: CommentActionProps) => {
-    const {user: {nick, avatar}, type, btc: {comment, like, share}, content} = props.comment
-    // 为-1则不进行渲染
+    const {user: {nick, avatar}, type: articleType, btc: {comment, like, share}, content} = props.comment
+    const {type} = props
+    // 000 001 010 100 011 101 110 111
+    // 0 1 2 4 3 5 6 7
+    // 为1表示展示对应的图标，全部展示则为7
+    const condition = baseConversion(type || 7, 2, 3)
     const actions: ActionData[] = [
-        {name: "share", value: share || -1, onClick: () => onClickHandles.share(props.comment)},
-        {name: "comment", value: comment || -1, onClick: () => onClickHandles.comment(props.comment)}, 
-        {name: "like", value: like, onClick: () => onClickHandles.like(props.comment)}]
+        {name: "share", value: share || 0, onClick: () => onClickHandles.share(props.comment)},
+        {name: "comment", value: comment || 0, onClick: () => onClickHandles.comment(props.comment)}, 
+        {name: "like", value: like, onClick: () => onClickHandles.like(props.comment)}
+    ].filter((icon, index) => condition[index] === '1')
     const actionsClassName = styles["CommentAction-foot-action"]
     return (
         <div className={styles["CommentAction-contaienr"]}>
