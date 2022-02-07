@@ -48,6 +48,8 @@ const Actions: React.FC<ActionsProps> = (props: ActionsProps) => {
         </span>
     )
 }
+
+/** 评论组件模板 */
 export const Comment: React.FC<CommentProps> = (props: CommentProps) => {
     const {image, nick, content, icons, onClick} = props
     return (

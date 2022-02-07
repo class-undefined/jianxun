@@ -10,6 +10,7 @@ import { Foot } from "./components/Foot/Foot";
 import styles from "./Comment.module.css"
 import { Drawer } from "./components/Drawer/Drawer";
 
+/**ToolBar的插件组件，展示文章总体评论 */
 export const Comment = (props: ChildrenProps) => {
     const {article} = props
     const {id, comment} = article
