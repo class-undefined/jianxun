@@ -1,5 +1,5 @@
 import { MouseEvent } from "react"
-import { Article } from "../../../../../type/article"
+import { Article } from "../../../../type/article"
 import { PluginConfig } from "../middleware/plugin"
 import { ToolBarPluginType } from "../middleware/plugin/type"
 import "../../plugin/plugins" // 读取插件，初始化插件配置

@@ -1,5 +1,5 @@
-import { Result } from "../../../utils/api/response"
-import { StatusCode } from "../../../utils/api/response/type"
+import { Result } from "../../../src/utils/api/response"
+import { StatusCode } from "../../../src/utils/api/response/type"
 
 export const responseExample = () => {
     const bar = Result.create().Ok("操作成功!").setData({user: "admin"}).build() // 构建成功数据

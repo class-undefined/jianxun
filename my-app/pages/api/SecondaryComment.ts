@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { ID, SecondaryComment } from "../../type/article"
-import { Response } from '../../utils/api/response/type'
-import { Result } from '../../utils/api/response/index'
-import { createSecondaryComment } from "../../utils/mock/comment"
+import { ID, SecondaryComment } from "../../src/type/article"
+import { Response } from '../../src/utils/api/response/type'
+import { Result } from '../../src/utils/api/response/index'
+import { createSecondaryComment } from "../../src/utils/mock/comment"
 const mockSecondaryComment = (rootId: ID): SecondaryComment[] => {
     const size = 5
     const result = [] as SecondaryComment[]

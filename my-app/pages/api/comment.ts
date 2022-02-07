@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Response } from '../../utils/api/response/type'
-import { Result } from '../../utils/api/response/index'
-import { ArticleComment, SecondaryComment } from '../../type/article'
-import { createArticleComment, createSecondaryComment } from '../../utils/mock/comment'
+import { Response } from '../../src/utils/api/response/type'
+import { Result } from '../../src/utils/api/response/index'
+import { ArticleComment, SecondaryComment } from '../../src/type/article'
+import { createArticleComment, createSecondaryComment } from '../../src/utils/mock/comment'
 const mockArticleCommentData = ():ArticleComment[] => {
     const size = 5
     const result = [] as ArticleComment[]

@@ -1,6 +1,6 @@
-import { getArticleData } from "../../../api/article"
-import { StatusCode } from "../../../utils/api/response/type"
-import { Response } from "../../../utils/api/response/type"
+import { getArticleData } from "../../../src/api/article"
+import { StatusCode } from "../../../src/utils/api/response/type"
+import { Response } from "../../../src/utils/api/response/type"
 export const serviceExample = () => {
     
     const articleId = "test13213"

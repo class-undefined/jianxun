@@ -1,5 +1,5 @@
 import mitt from "mitt";
-import { ArticleComment } from "../../../../../../../../type/article";
+import { ArticleComment } from "../../../../../../../type/article";
 
 type EventType = {
     render: ArticleComment

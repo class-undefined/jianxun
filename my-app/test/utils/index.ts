@@ -1,8 +1,8 @@
 /**
  * @author: 野漫横江
  */
-import { Result } from "../../utils/api/response"
-import { StatusCode } from "../../utils/api/response/type"
+import { Result } from "../../src/utils/api/response"
+import { StatusCode } from "../../src/utils/api/response/type"
 
 export const utilsTest = (isRun: boolean) => {
     if (!isRun) return

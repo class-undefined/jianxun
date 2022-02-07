@@ -1,5 +1,5 @@
-import { ArticleComment, SecondaryComment } from "../../../../../../../../type/article";
-import { baseConversion } from "../../../../../../../../utils/number";
+import { ArticleComment, SecondaryComment } from "../../../../../../../type/article";
+import { baseConversion } from "../../../../../../../utils/number";
 import { ActionData, Comment } from "../../../../../../Comment/Comment";
 import { SvgIcon } from "../../../../../../SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"

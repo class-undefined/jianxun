@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getArticleComment } from "../../../../../../api/article";
-import { ArticleComment } from "../../../../../../type/article";
-import { Response, StatusCode } from "../../../../../../utils/api/response/type";
+import { getArticleComment } from "../../../../../api/article";
+import { ArticleComment } from "../../../../../type/article";
+import { Response, StatusCode } from "../../../../../utils/api/response/type";
 import { SvgIcon } from "../../../../SvgIcon/SvgIcon";
 import { ChildrenProps } from "../../../api/middleware/ToolBarEffect/template";
 import { closeModal } from "../../api";

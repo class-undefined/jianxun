@@ -1,4 +1,4 @@
-import { ClassNameBuilder } from "../../../utils/style"
+import { ClassNameBuilder } from "../../../src/utils/style"
 
 export const styleExample = () => {
     /* 创建一个className控制器，方便当元素被点击时转化样式 */

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Response } from '../../utils/api/response/type'
-import { Result } from '../../utils/api/response/index'
-import { Article } from '../../type/article'
+import { Response } from '../../src/utils/api/response/type'
+import { Result } from '../../src/utils/api/response/index'
+import { Article } from '../../src/type/article'
 const mockArticleData:Article = {
     id: "13215465163521",
     image: "https://www.baidu.com/",

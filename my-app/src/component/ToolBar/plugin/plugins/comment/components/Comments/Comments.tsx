@@ -1,4 +1,4 @@
-import { ArticleComment } from "../../../../../../../../type/article"
+import { ArticleComment } from "../../../../../../../type/article"
 import { CommentAction } from "../CommentAction/CommentAction"
 interface CommentsProps {
     className?: string,
