@@ -1,3 +1,6 @@
+/**
+ * @author: 野漫横江
+ */
 import styles from "./Divider.module.css"
 
 interface DividerProps {
