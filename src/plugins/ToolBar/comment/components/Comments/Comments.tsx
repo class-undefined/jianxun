@@ -7,21 +7,35 @@ interface CommentsProps {
     render: () => JSX.Element[]
 }
 
-export const createCommentAcion = (comments: ArticleComment[], onClick?: () => void) => {
+/**
+ * Comments组件的一级评论render函数
+ * @param comments 一级评论数据数组
+ * @param onClick 列表的单击事件
+ * @returns 返回一级评论dom列表
+ */
+export const createCommentAcion = (comments: ArticleComment[], onClick?: (comment: ArticleComment) => void) => {
     return comments.map(comment => {
+        const handle = onClick === undefined ? undefined : () => onClick(comment)
         return (
             <li key={comment.id}>
-                <CommentAction comment={comment} onClick={onClick}/>
+                <CommentAction comment={comment} onClick={handle}/>
             </li>
         )
     })
 }
 
-export const createSCommentAcion = (comments: SecondaryComment[], onClick?: () => void) => {
+/**
+ * Comments组件的二级评论render函数
+ * @param comments 二级评论数据数组
+ * @param onClick 列表的单击事件
+ * @returns 返回二级评论dom列表
+ */
+export const createSCommentAcion = (comments: SecondaryComment[], onClick?: (comment: SecondaryComment) => void) => {
     return comments.map(comment => {
+        const handle = onClick === undefined ? undefined : () => onClick(comment)
         return (
             <li key={comment.id}>
-                <SCommentAction comment={comment} onClick={onClick}/>
+                <SCommentAction comment={comment} onClick={handle}/>
             </li>
         )
     })
