@@ -1,0 +1,58 @@
+.container {
+
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.avatar {
+    flex: 0 1;
+    flex-basis: 50px;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+.avatar img {
+    border-radius: 50%;
+    object-fit: fill;
+}
+.body {
+    flex: 1;
+}
+
+.nick {
+    color: rgb(53, 94, 170);
+    display: inline-block;
+    cursor: pointer;
+}
+.comment {
+    margin-top: 5px;
+}
+.foot {
+    flex: none;
+    height: 25px;
+}
+
+.foot-actions {
+    float: right;
+}
+
+.foot-action {
+    line-height: 25px;
+    vertical-align: top;
+}
+.foot-action-icon {
+    cursor: pointer;
+    margin-right: 5px;
+}
+.foot-action-value {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+    margin-right: 10px;
+}
