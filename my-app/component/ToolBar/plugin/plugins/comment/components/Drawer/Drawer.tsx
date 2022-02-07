@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { SComment } from "../../SecondaryComment/SComment"
+import { SComment } from "../../SComment/SComment"
 import { SecondaryApi } from "../CommentAction/handle"
 
 export const Drawer = () => {
