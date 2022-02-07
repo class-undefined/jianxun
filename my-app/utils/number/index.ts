@@ -9,7 +9,7 @@ export const baseConversion = (num: number, radix: number = 2, n: number = 0): s
     let s = num.toString(radix)
     if (n === 0) return s
     const diff = n - s.length
-    console.assert(diff >= 0, `位数有误，转换后的位数大于所给出的n: ${n}`)
+    if (diff < 0) throw new Error(`参数有误，转换后的位数大于所给出的n: ${n}`)
     for (let i = 0; i < diff; i++) {
         s = "0" + s
     }
