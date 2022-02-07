@@ -5,7 +5,7 @@ interface CommentProps {
     nick: string,
     content: JSX.Element,
     icons: ActionData[]
-
+    onClick?: () => void
 }
 export interface ActionData {
     name: string,
@@ -49,9 +49,9 @@ const Actions: React.FC<ActionsProps> = (props: ActionsProps) => {
     )
 }
 export const Comment: React.FC<CommentProps> = (props: CommentProps) => {
-    const {image, nick, content, icons} = props
+    const {image, nick, content, icons, onClick} = props
     return (
-        <div className={styles["contaienr"]}>
+        <div className={styles["contaienr"]} onClick={onClick}>
             <div className={styles["main"]}>
                 <div className={styles["avatar"]}>
                     <img src={image} alt="头像" width={"48px"} height={"48px"} />
