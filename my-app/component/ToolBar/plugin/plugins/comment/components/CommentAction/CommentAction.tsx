@@ -1,4 +1,4 @@
-import { ArticleComment } from "../../../../../../../type/article";
+import { ArticleComment, SecondaryComment } from "../../../../../../../type/article";
 import { baseConversion } from "../../../../../../../utils/number";
 import { SvgIcon } from "../../../../../../SvgIcon/SvgIcon";
 import styles from "./CommentAction.module.css"
@@ -7,6 +7,20 @@ interface CommentActionProps {
     className?: string,
     /** 文章单条评论数据 */
     comment: ArticleComment,
+    /**```
+     * share comment like
+     * 000 001 010 100 011 101 110 111
+     * 0    1   2   4   3   5   6   7
+     * 为1表示展示对应的图标，全部展示则为7，不填写type则默认为7
+     * ```
+     */
+    type?: number // 表示显示哪些图标
+}
+
+interface SCommentActionProps {
+    className?: string,
+    /** 文章单条评论数据 */
+    comment: SecondaryComment,
     /**```
      * share comment like
      * 000 001 010 100 011 101 110 111
@@ -91,3 +105,13 @@ export const CommentAction: React.FC<CommentActionProps> = (props: CommentAction
         </div>
     )
 }
+
+// const SCommentAction = (props: SCommentActionProps) => {
+//     const {id, rootId, user: {nick, avatar}, btc:{comment, like, share}, preComment} = props.comment
+//     if (preComment === null)
+//     return (
+//         <div>
+
+//         </div>
+//     )
+// }

@@ -11,11 +11,25 @@ interface SecondaryCommentProps {
     className?: string,
     comment: ArticleComment
 }
+
+interface SubCommentProps {
+    scomment: SecondaryComment
+}
+
+// const SubComment:React.FC<SubCommentProps> = (props: SubCommentProps) => {
+//     const {scomment} = props
+//     const hasPre = scomment.preComment === null
+
+//     return (
+
+//     )
+// }
+
 /**  二级评论 */
 export const SComment: React.FC<SecondaryCommentProps> = (props: SecondaryCommentProps) => {
     const [rootClassName, setRootClassName] = useState(styles["SecondaryComment-container"])
     const {comment} = props
-    useState([] as SecondaryComment[])
+    const [comments, setComments] = useState([] as SecondaryComment[])
     const close = () => {
         setRootClassName(styles["SecondaryComment-container"] + " " + styles["SecondaryComment-container-close"])
         setTimeout(() => {
@@ -29,7 +43,7 @@ export const SComment: React.FC<SecondaryCommentProps> = (props: SecondaryCommen
                 alert("error1")
                 return
             }
-            const {comments} = data
+            setComments(data.comments as SecondaryComment[])
         })
     })
     return (
