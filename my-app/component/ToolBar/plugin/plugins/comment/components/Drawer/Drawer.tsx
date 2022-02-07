@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { SecondaryComment } from "../../SecondaryComment/SecondaryComment"
+import { SComment } from "../../SecondaryComment/SComment"
 import { SecondaryApi } from "../CommentAction/handle"
 
 export const Drawer = () => {
@@ -7,7 +7,7 @@ export const Drawer = () => {
     const [Template, setTemplate] = useState(Hidden)
     useEffect(() => {
         SecondaryApi.useHandle(articleComment => {
-            setTemplate(<SecondaryComment comment={articleComment}/>)
+            setTemplate(<SComment comment={articleComment}/>)
         })
         return () => SecondaryApi.clear()
     })
