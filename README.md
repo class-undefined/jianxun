@@ -1,39 +1,45 @@
-# jianxun
-
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
-
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-aaaaa
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 目录结构
+> *标星号的目录为ToolBar组件自身维护的api，不要进行改动*
+```
+my-app
+├── api //请求api接口
+├── component // 组件
+│   ├── SvgIcon // svg图标组件
+│   └── ToolBar // ToolBar组件
+│       ├── api // ToolBar初始化数据以及服务插件的中间件及相关api *
+│       │   ├── initToolBar // 用于初始化ToolBar数据并将插件提供给ToolBar *
+│       │   └── middleware // 提供插件承载的模板以及注册插件的核心api *
+│       │       ├── ToolBarEffect // 插件注入监听及控制模板的事件处理 *
+│       │       │   └── template // 插件容器模板 *
+│       │       └── plugin // useToolBarEffect中间件api
+│       ├── children // ToolBar自身控件的tsx *
+│       │   └── ToolBarItem // ToolBar的actions控件 *
+│       └── plugin // 插件以及将插件注入至ToolBar
+│           ├── api // 提供控制模板操作的一些api
+│           └── plugins // 编写的插件存放的位置，插件即ToolBar组件的拓展组件，如点击评论图标展开的评论组件、点击收藏展开的收藏组件等。如何将插件注入至ToolBar请参照:my-app/component/ToolBar/plugin/plugins/index.ts
+│               └── comment
+├── example // 一些封装好的api使用样例或使用规范
+│   ├── ToolBarEffect // useToolBarEffect api的使用样例
+│   └── utils // 工具api使用样例
+│       ├── response
+│       ├── service
+│       └── style
+├── pages
+│   └── api
+├── public
+├── static
+│   └── icons
+│       └── svg // 提供给SvgIcon组件的svg文件存放目录
+├── styles
+├── test // 一些用于测试的代码
+│   ├── ToolBarEffect
+│   ├── example
+│   └── utils
+├── type // 比较核心或公用的type类型存放在这里，建议在此目录单独创建一个文件夹
+│   └── article
+└── utils // 可复用的工具api，建议根据功能划分创建文件夹 （使用方法在最上层的example目录）
+    ├── api
+    │   ├── response
+    │   └── service
+    └── style
+```
