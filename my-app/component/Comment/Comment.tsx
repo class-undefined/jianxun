@@ -7,7 +7,7 @@ interface CommentProps {
     icons: ActionData[]
 
 }
-interface ActionData {
+export interface ActionData {
     name: string,
     value: number,
     onClick?: () => void
